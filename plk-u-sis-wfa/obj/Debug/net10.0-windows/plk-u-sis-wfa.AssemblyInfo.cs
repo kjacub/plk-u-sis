@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("plk-u-sis-wfa")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8deb01626bb767f23b5193b5e42a10c1efe5d44c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+544dccdb6f8d0c56824f49292fa4f6d13c95f118")]
 [assembly: System.Reflection.AssemblyProductAttribute("plk-u-sis-wfa")]
 [assembly: System.Reflection.AssemblyTitleAttribute("plk-u-sis-wfa")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
