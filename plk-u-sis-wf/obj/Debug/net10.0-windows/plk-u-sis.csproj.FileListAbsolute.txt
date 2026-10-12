@@ -1,0 +1,10 @@
+C:\Users\Jewell\Documents\plk-u-sis\plk-u-sis-wf\obj\Debug\net10.0-windows\plk-u-sis.csproj.AssemblyReference.cache
+C:\Users\Jewell\Documents\plk-u-sis\plk-u-sis-wf\obj\Debug\net10.0-windows\plk_u_sis.PLKLoginScreenForm.resources
+C:\Users\Jewell\Documents\plk-u-sis\plk-u-sis-wf\obj\Debug\net10.0-windows\plk_u_sis.PLKStudenRecordsForm.resources
+C:\Users\Jewell\Documents\plk-u-sis\plk-u-sis-wf\obj\Debug\net10.0-windows\plk_u_sis.Properties.Resources.resources
+C:\Users\Jewell\Documents\plk-u-sis\plk-u-sis-wf\obj\Debug\net10.0-windows\plk-u-sis.csproj.GenerateResource.cache
+C:\Users\Jewell\Documents\plk-u-sis\plk-u-sis-wf\obj\Debug\net10.0-windows\plk-u-sis.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Jewell\Documents\plk-u-sis\plk-u-sis-wf\obj\Debug\net10.0-windows\plk-u-sis.AssemblyInfoInputs.cache
+C:\Users\Jewell\Documents\plk-u-sis\plk-u-sis-wf\obj\Debug\net10.0-windows\plk-u-sis.AssemblyInfo.cs
+C:\Users\Jewell\Documents\plk-u-sis\plk-u-sis-wf\obj\Debug\net10.0-windows\plk-u-sis.csproj.CoreCompileInputs.cache
+C:\Users\Jewell\Documents\plk-u-sis\plk-u-sis-wf\obj\Debug\net10.0-windows\plk-u-sis.sourcelink.json
