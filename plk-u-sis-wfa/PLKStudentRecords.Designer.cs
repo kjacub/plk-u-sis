@@ -58,6 +58,7 @@
             // 
             resources.ApplyResources(txtStudentId, "txtStudentId");
             txtStudentId.Name = "txtStudentId";
+            txtStudentId.TextChanged += txtStudentId_TextChanged;
             // 
             // txtFullName
             // 
@@ -80,6 +81,7 @@
             // 
             resources.ApplyResources(cmbGender, "cmbGender");
             cmbGender.FormattingEnabled = true;
+            cmbGender.Items.AddRange(new object[] { resources.GetString("cmbGender.Items"), resources.GetString("cmbGender.Items1"), resources.GetString("cmbGender.Items2") });
             cmbGender.Name = "cmbGender";
             cmbGender.SelectedIndexChanged += cmbGender_SelectedIndexChanged;
             // 
@@ -87,6 +89,7 @@
             // 
             resources.ApplyResources(cmbProgram, "cmbProgram");
             cmbProgram.FormattingEnabled = true;
+            cmbProgram.Items.AddRange(new object[] { resources.GetString("cmbProgram.Items") });
             cmbProgram.Name = "cmbProgram";
             cmbProgram.SelectedIndexChanged += cmbProgram_SelectedIndexChanged;
             // 
@@ -94,6 +97,7 @@
             // 
             resources.ApplyResources(cmbYearLevel, "cmbYearLevel");
             cmbYearLevel.FormattingEnabled = true;
+            cmbYearLevel.Items.AddRange(new object[] { resources.GetString("cmbYearLevel.Items"), resources.GetString("cmbYearLevel.Items1"), resources.GetString("cmbYearLevel.Items2"), resources.GetString("cmbYearLevel.Items3") });
             cmbYearLevel.Name = "cmbYearLevel";
             cmbYearLevel.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
@@ -141,6 +145,7 @@
             resources.ApplyResources(btnAdd, "btnAdd");
             btnAdd.Name = "btnAdd";
             btnAdd.UseVisualStyleBackColor = true;
+            btnAdd.Click += btnAdd_Click;
             // 
             // label3
             // 
