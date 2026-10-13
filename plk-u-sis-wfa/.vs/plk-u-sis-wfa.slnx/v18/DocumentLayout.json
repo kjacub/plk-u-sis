@@ -3,8 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\Jewell\\Documents\\plk-u-sis\\plk-u-sis-wfa\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{05D7FD56-03DB-96A5-317E-470674B1B936}|plk-u-sis-wfa.csproj|C:\\Users\\Jewell\\Documents\\plk-u-sis\\plk-u-sis-wfa\\plkloginscreenform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{05D7FD56-03DB-96A5-317E-470674B1B936}|plk-u-sis-wfa.csproj|c:\\users\\jewell\\documents\\plk-u-sis\\plk-u-sis-wfa\\plksisdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{05D7FD56-03DB-96A5-317E-470674B1B936}|plk-u-sis-wfa.csproj|solutionrelative:plksisdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{05D7FD56-03DB-96A5-317E-470674B1B936}|plk-u-sis-wfa.csproj|c:\\users\\jewell\\documents\\plk-u-sis\\plk-u-sis-wfa\\plksisdashboard.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{05D7FD56-03DB-96A5-317E-470674B1B936}|plk-u-sis-wfa.csproj|solutionrelative:plksisdashboard.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{05D7FD56-03DB-96A5-317E-470674B1B936}|plk-u-sis-wfa.csproj|c:\\users\\jewell\\documents\\plk-u-sis\\plk-u-sis-wfa\\plkloginscreenform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{05D7FD56-03DB-96A5-317E-470674B1B936}|plk-u-sis-wfa.csproj|solutionrelative:plkloginscreenform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{05D7FD56-03DB-96A5-317E-470674B1B936}|plk-u-sis-wfa.csproj|c:\\users\\jewell\\documents\\plk-u-sis\\plk-u-sis-wfa\\plksisdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{05D7FD56-03DB-96A5-317E-470674B1B936}|plk-u-sis-wfa.csproj|solutionrelative:plksisdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{05D7FD56-03DB-96A5-317E-470674B1B936}|plk-u-sis-wfa.csproj|c:\\users\\jewell\\documents\\plk-u-sis\\plk-u-sis-wfa\\plkloginscreenform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -18,15 +30,49 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PLKSISDashboard.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Jewell\\Documents\\plk-u-sis\\plk-u-sis-wfa\\PLKSISDashboard.cs",
+              "RelativeDocumentMoniker": "PLKSISDashboard.cs",
+              "ToolTip": "C:\\Users\\Jewell\\Documents\\plk-u-sis\\plk-u-sis-wfa\\PLKSISDashboard.cs [Design]",
+              "RelativeToolTip": "PLKSISDashboard.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-13T17:37:08.424Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "PLKSISDashboard.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\Jewell\\Documents\\plk-u-sis\\plk-u-sis-wfa\\PLKSISDashboard.Designer.cs",
+              "RelativeDocumentMoniker": "PLKSISDashboard.Designer.cs",
+              "ToolTip": "C:\\Users\\Jewell\\Documents\\plk-u-sis\\plk-u-sis-wfa\\PLKSISDashboard.Designer.cs",
+              "RelativeToolTip": "PLKSISDashboard.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-13T17:36:59.696Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PLKSISDashboard.cs",
+              "DocumentMoniker": "C:\\Users\\Jewell\\Documents\\plk-u-sis\\plk-u-sis-wfa\\PLKSISDashboard.cs",
+              "RelativeDocumentMoniker": "PLKSISDashboard.cs",
+              "ToolTip": "C:\\Users\\Jewell\\Documents\\plk-u-sis\\plk-u-sis-wfa\\PLKSISDashboard.cs",
+              "RelativeToolTip": "PLKSISDashboard.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-13T17:36:48.769Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "PLKLoginScreenForm.cs",
               "DocumentMoniker": "C:\\Users\\Jewell\\Documents\\plk-u-sis\\plk-u-sis-wfa\\PLKLoginScreenForm.cs",
               "RelativeDocumentMoniker": "PLKLoginScreenForm.cs",
@@ -39,7 +85,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "PLKLoginScreenForm.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Jewell\\Documents\\plk-u-sis\\plk-u-sis-wfa\\PLKLoginScreenForm.cs",
               "RelativeDocumentMoniker": "PLKLoginScreenForm.cs",
@@ -48,6 +94,10 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-10-12T17:52:49.549Z",
               "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             }
           ]
         }
