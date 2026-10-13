@@ -3,24 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\Jewell\\Documents\\plk-u-sis\\plk-u-sis-wfa\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{05D7FD56-03DB-96A5-317E-470674B1B936}|plk-u-sis-wfa.csproj|c:\\users\\jewell\\documents\\plk-u-sis\\plk-u-sis-wfa\\plkstudentrecords.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{05D7FD56-03DB-96A5-317E-470674B1B936}|plk-u-sis-wfa.csproj|solutionrelative:plkstudentrecords.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Jewell\\Documents\\plk-u-sis\\plk-u-sis-wfa\\PLKStudentRecords.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:PLKStudentRecords.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{05D7FD56-03DB-96A5-317E-470674B1B936}|plk-u-sis-wfa.csproj|c:\\users\\jewell\\documents\\plk-u-sis\\plk-u-sis-wfa\\plkloginscreenform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{05D7FD56-03DB-96A5-317E-470674B1B936}|plk-u-sis-wfa.csproj|solutionrelative:plkloginscreenform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Jewell\\Documents\\plk-u-sis\\plk-u-sis-wfa\\plkloginscreenform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:plkloginscreenform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{05D7FD56-03DB-96A5-317E-470674B1B936}|plk-u-sis-wfa.csproj|c:\\users\\jewell\\documents\\plk-u-sis\\plk-u-sis-wfa\\plkloginscreenform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{05D7FD56-03DB-96A5-317E-470674B1B936}|plk-u-sis-wfa.csproj|solutionrelative:plkloginscreenform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Jewell\\Documents\\plk-u-sis\\plk-u-sis-wfa\\PLKLoginScreenForm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:PLKLoginScreenForm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{05D7FD56-03DB-96A5-317E-470674B1B936}|plk-u-sis-wfa.csproj|c:\\users\\jewell\\documents\\plk-u-sis\\plk-u-sis-wfa\\plkloginscreenform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{05D7FD56-03DB-96A5-317E-470674B1B936}|plk-u-sis-wfa.csproj|solutionrelative:plkloginscreenform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Jewell\\Documents\\plk-u-sis\\plk-u-sis-wfa\\PLKLoginScreenForm.Designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:PLKLoginScreenForm.Designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{05D7FD56-03DB-96A5-317E-470674B1B936}|plk-u-sis-wfa.csproj|c:\\users\\jewell\\documents\\plk-u-sis\\plk-u-sis-wfa\\plkstudentrecords.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{05D7FD56-03DB-96A5-317E-470674B1B936}|plk-u-sis-wfa.csproj|solutionrelative:plkstudentrecords.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Jewell\\Documents\\plk-u-sis\\plk-u-sis-wfa\\PLKStudentRecords.Designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:PLKStudentRecords.Designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,19 +30,22 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 4,
           "Children": [
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "PLKLoginScreenForm.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Jewell\\Documents\\plk-u-sis\\plk-u-sis-wfa\\PLKLoginScreenForm.cs",
               "RelativeDocumentMoniker": "PLKLoginScreenForm.cs",
               "ToolTip": "C:\\Users\\Jewell\\Documents\\plk-u-sis\\plk-u-sis-wfa\\PLKLoginScreenForm.cs [Design]",
               "RelativeToolTip": "PLKLoginScreenForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-13T09:34:39.512Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2026-10-13T09:34:39.512Z"
             },
             {
               "$type": "Document",
@@ -54,12 +57,11 @@
               "RelativeToolTip": "PLKLoginScreenForm.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-13T09:34:33.775Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-10-13T09:34:33.775Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "PLKLoginScreenForm.Designer.cs",
               "DocumentMoniker": "C:\\Users\\Jewell\\Documents\\plk-u-sis\\plk-u-sis-wfa\\PLKLoginScreenForm.Designer.cs",
               "RelativeDocumentMoniker": "PLKLoginScreenForm.Designer.cs",
@@ -67,20 +69,19 @@
               "RelativeToolTip": "PLKLoginScreenForm.Designer.cs",
               "ViewState": "AgIAACwAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-13T09:34:20.286Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-10-13T09:34:20.286Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "PLKStudentRecords.cs [Design - Afar (Djibouti)]",
+              "Title": "PLKStudentRecords.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Jewell\\Documents\\plk-u-sis\\plk-u-sis-wfa\\PLKStudentRecords.cs",
               "RelativeDocumentMoniker": "PLKStudentRecords.cs",
-              "ToolTip": "C:\\Users\\Jewell\\Documents\\plk-u-sis\\plk-u-sis-wfa\\PLKStudentRecords.cs [Design - Afar (Djibouti)]*",
-              "RelativeToolTip": "PLKStudentRecords.cs [Design - Afar (Djibouti)]*",
+              "ToolTip": "C:\\Users\\Jewell\\Documents\\plk-u-sis\\plk-u-sis-wfa\\PLKStudentRecords.cs [Design]",
+              "RelativeToolTip": "PLKStudentRecords.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-10-13T09:29:45.953Z",
-              "EditorCaption": " [Design - Afar (Djibouti)]"
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
@@ -88,16 +89,11 @@
               "Title": "PLKStudentRecords.Designer.cs",
               "DocumentMoniker": "C:\\Users\\Jewell\\Documents\\plk-u-sis\\plk-u-sis-wfa\\PLKStudentRecords.Designer.cs",
               "RelativeDocumentMoniker": "PLKStudentRecords.Designer.cs",
-              "ToolTip": "C:\\Users\\Jewell\\Documents\\plk-u-sis\\plk-u-sis-wfa\\PLKStudentRecords.Designer.cs*",
-              "RelativeToolTip": "PLKStudentRecords.Designer.cs*",
+              "ToolTip": "C:\\Users\\Jewell\\Documents\\plk-u-sis\\plk-u-sis-wfa\\PLKStudentRecords.Designer.cs",
+              "RelativeToolTip": "PLKStudentRecords.Designer.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-13T09:30:00.949Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+              "WhenOpened": "2026-10-13T09:30:00.949Z"
             }
           ]
         }
