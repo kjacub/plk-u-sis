@@ -125,7 +125,7 @@
     <value>151, 27</value>
   </data>
   <data name="txtFullName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>316, 125</value>
+    <value>304, 125</value>
   </data>
   <data name="txtFullName.Size" type="System.Drawing.Size, System.Drawing">
     <value>328, 27</value>
@@ -154,7 +154,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblFullName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>319, 102</value>
+    <value>307, 102</value>
   </data>
   <data name="lblFullName.Size" type="System.Drawing.Size, System.Drawing">
     <value>76, 20</value>
@@ -169,7 +169,7 @@
     <value>151, 28</value>
   </data>
   <data name="cmbProgram.Location" type="System.Drawing.Point, System.Drawing">
-    <value>316, 256</value>
+    <value>306, 256</value>
   </data>
   <data name="cmbProgram.Size" type="System.Drawing.Size, System.Drawing">
     <value>328, 28</value>
@@ -195,6 +195,9 @@
   <data name="lblProgram.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="lblProgram.Location" type="System.Drawing.Point, System.Drawing">
+    <value>309, 228</value>
+  </data>
   <data name="lblProgram.Size" type="System.Drawing.Size, System.Drawing">
     <value>66, 20</value>
   </data>
@@ -206,6 +209,9 @@
   </data>
   <data name="lblContact.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
+  </data>
+  <data name="lblContact.Location" type="System.Drawing.Point, System.Drawing">
+    <value>309, 165</value>
   </data>
   <data name="lblContact.Size" type="System.Drawing.Size, System.Drawing">
     <value>60, 20</value>
@@ -224,6 +230,9 @@
   </data>
   <data name="lblGender.Text" xml:space="preserve">
     <value>Gender</value>
+  </data>
+  <data name="txtContact.Location" type="System.Drawing.Point, System.Drawing">
+    <value>306, 188</value>
   </data>
   <data name="txtContact.Size" type="System.Drawing.Size, System.Drawing">
     <value>186, 27</value>
@@ -250,6 +259,9 @@ Student Information System
   </data>
   <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>66, 74</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>142, 20</value>
@@ -309,7 +321,7 @@ Student Information System
     <value>177, 368</value>
   </data>
   <data name="txtSearch.Size" type="System.Drawing.Size, System.Drawing">
-    <value>467, 27</value>
+    <value>447, 27</value>
   </data>
   <data name="lblSearch.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -317,31 +329,25 @@ Student Information System
   <data name="lblSearch.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="lblSearch.Location" type="System.Drawing.Point, System.Drawing">
-    <value>67, 373</value>
-  </data>
   <data name="lblSearch.Size" type="System.Drawing.Size, System.Drawing">
     <value>111, 20</value>
-  </data>
-  <data name="lblSearch.TabIndex" type="System.Int32, mscorlib">
-    <value>20</value>
   </data>
   <data name="lblSearch.Text" xml:space="preserve">
     <value>Search Student:</value>
   </data>
-  <data name="dgvStudentRecords.Location" type="System.Drawing.Point, System.Drawing">
-    <value>64, 413</value>
-  </data>
-  <data name="dgvStudentRecords.RowHeadersWidth" type="System.Int32, mscorlib">
-    <value>51</value>
-  </data>
   <data name="dgvStudentRecords.Size" type="System.Drawing.Size, System.Drawing">
-    <value>580, 188</value>
+    <value>580, 355</value>
   </data>
-  <data name="dgvStudentRecords.TabIndex" type="System.Int32, mscorlib">
-    <value>21</value>
+  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>64, 68</value>
+  </data>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>580, 284</value>
+  </data>
+  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1283, 569</value>
+    <value>716, 820</value>
   </data>
 </root>

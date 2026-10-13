@@ -51,6 +51,7 @@
             txtSearch = new TextBox();
             lblSearch = new Label();
             dgvStudentRecords = new DataGridView();
+            panel1 = new Panel();
             ((System.ComponentModel.ISupportInitialize)dgvStudentRecords).BeginInit();
             SuspendLayout();
             // 
@@ -180,17 +181,23 @@
             resources.ApplyResources(dgvStudentRecords, "dgvStudentRecords");
             dgvStudentRecords.AllowUserToAddRows = false;
             dgvStudentRecords.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvStudentRecords.BackgroundColor = Color.FromArgb(255, 202, 228);
             dgvStudentRecords.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvStudentRecords.MultiSelect = false;
             dgvStudentRecords.Name = "dgvStudentRecords";
             dgvStudentRecords.ReadOnly = true;
             dgvStudentRecords.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             // 
+            // panel1
+            // 
+            resources.ApplyResources(panel1, "panel1");
+            panel1.Name = "panel1";
+            // 
             // PLKStudentRecords
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.White;
+            BackColor = Color.FromArgb(255, 202, 228);
             Controls.Add(dgvStudentRecords);
             Controls.Add(lblSearch);
             Controls.Add(txtSearch);
@@ -213,6 +220,7 @@
             Controls.Add(txtFullName);
             Controls.Add(txtStudentId);
             Controls.Add(txtContact);
+            Controls.Add(panel1);
             Name = "PLKStudentRecords";
             Load += PLKStudentRecords_Load;
             ((System.ComponentModel.ISupportInitialize)dgvStudentRecords).EndInit();
@@ -244,5 +252,6 @@
         private TextBox txtSearch;
         private Label lblSearch;
         private DataGridView dgvStudentRecords;
+        private Panel panel1;
     }
 }
