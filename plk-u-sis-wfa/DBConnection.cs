@@ -31,5 +31,20 @@ namespace plk_u_sis_wfa
         {
             return new MySqlConnection(connectionString);
         }
+        public static bool TestConnection()
+        {
+            try
+            {
+                using var connection = GetConnection();
+                connection.Open();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Database connection failed: " + ex.Message,
+                    "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
     }
 }
