@@ -168,6 +168,9 @@
   <data name="cmbGender.Size" type="System.Drawing.Size, System.Drawing">
     <value>151, 28</value>
   </data>
+  <data name="cmbProgram.Items" xml:space="preserve">
+    <value>BS ComSci</value>
+  </data>
   <data name="cmbProgram.Location" type="System.Drawing.Point, System.Drawing">
     <value>316, 256</value>
   </data>
@@ -317,31 +320,22 @@ Student Information System
   <data name="lblSearch.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="lblSearch.Location" type="System.Drawing.Point, System.Drawing">
-    <value>67, 373</value>
-  </data>
   <data name="lblSearch.Size" type="System.Drawing.Size, System.Drawing">
     <value>111, 20</value>
-  </data>
-  <data name="lblSearch.TabIndex" type="System.Int32, mscorlib">
-    <value>20</value>
   </data>
   <data name="lblSearch.Text" xml:space="preserve">
     <value>Search Student:</value>
   </data>
-  <data name="dgvStudentRecords.Location" type="System.Drawing.Point, System.Drawing">
-    <value>64, 413</value>
+  <data name="dgvStudentRecords.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
   </data>
-  <data name="dgvStudentRecords.RowHeadersWidth" type="System.Int32, mscorlib">
-    <value>51</value>
+  <data name="dgvStudentRecords.Location" type="System.Drawing.Point, System.Drawing">
+    <value>50, 450</value>
   </data>
   <data name="dgvStudentRecords.Size" type="System.Drawing.Size, System.Drawing">
-    <value>580, 188</value>
-  </data>
-  <data name="dgvStudentRecords.TabIndex" type="System.Int32, mscorlib">
-    <value>21</value>
+    <value>900, 250</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1283, 569</value>
+    <value>1082, 703</value>
   </data>
 </root>
