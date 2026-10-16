@@ -364,7 +364,7 @@
         private Panel pnlPasswordUnder;
         private Panel pnlPassword;
         private PictureBox pbPasswordIcon;
-   
+
         private TextBox txtAdminIdField;
         private Panel pnlAdminId;
         private PictureBox pbAdminIcon;
