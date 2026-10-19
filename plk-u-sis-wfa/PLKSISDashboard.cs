@@ -24,13 +24,26 @@ namespace plk_u_sis_wfa
             btnUpdate.Click += btnUpdate_Click;
             btnDelete.Click += btnDelete_Click;
             btnSort.Click += btnSort_Click;
-            btnSearch.Click += btnSearch_Click;
+            btnSearchClear.Click += btnSearchClear_Click;
             btnFilter.Click += btnFilter_Click;
-            btnClearFilter.Click += btnClearFilter_Click; // Inilagay na ang event binding para sa btnClearFilter
+            btnClearFilter.Click += btnClearFilter_Click;
             dgvStudentRecords.CellClick += dgvStudentRecords_CellClick;
 
             TestDatabaseConnection();
+            SetupComboBoxPlaceholders();
             LoadStudents();
+        }
+
+        private void SetupComboBoxPlaceholders()
+        {
+            cmbFilterProgram.Items.Clear();
+            cmbFilterProgram.Items.Add(" Select Program");
+            cmbFilterProgram.Items.Add("BS in Cosmetic Science");
+            cmbFilterProgram.Items.Add("BS in Floriculture and Botanical Design");
+            cmbFilterProgram.Items.Add("BS in Historical Fashion");
+            cmbFilterProgram.Items.Add("BS in Haute Couture and Luxury Fashion Design");
+
+            cmbFilterProgram.SelectedIndex = 0;
         }
 
         private void PLKSISDashboard_Load(object? sender, EventArgs e)
@@ -61,9 +74,9 @@ namespace plk_u_sis_wfa
             if (rbFilter3rdYear != null && rbFilter3rdYear.Checked) return "3rd Year";
             if (rbFilter4thYear != null && rbFilter4thYear.Checked) return "4th Year";
 
-            // Kapag nakacheck ang RadioButton para sa All Years / ALL
             return "ALL";
         }
+
 
         private void LoadStudents(string programFilter = "", string yearFilter = "", string searchQuery = "")
         {
@@ -74,13 +87,12 @@ namespace plk_u_sis_wfa
                     conn.Open();
                     string query = "SELECT * FROM students WHERE 1=1";
 
-                    // I-check kung HINDI "ALL", "All Programs", o "None" ang napili sa Program
                     bool applyProgram = !string.IsNullOrWhiteSpace(programFilter) &&
+                                       !programFilter.Trim().Equals(" Select Program", StringComparison.OrdinalIgnoreCase) &&
                                        !programFilter.Trim().Equals("ALL", StringComparison.OrdinalIgnoreCase) &&
                                        !programFilter.Trim().Equals("All Programs", StringComparison.OrdinalIgnoreCase) &&
                                        !programFilter.Trim().Equals("None", StringComparison.OrdinalIgnoreCase);
 
-                    // I-check kung HINDI "ALL", "All Years", "All", o "None" ang napili sa Year Level
                     bool applyYear = !string.IsNullOrWhiteSpace(yearFilter) &&
                                     !yearFilter.Trim().Equals("ALL", StringComparison.OrdinalIgnoreCase) &&
                                     !yearFilter.Trim().Equals("All Years", StringComparison.OrdinalIgnoreCase) &&
@@ -189,15 +201,21 @@ namespace plk_u_sis_wfa
             LoadStudents(selectedProgram, selectedYear, searchText);
         }
 
-        private void btnSearch_Click(object? sender, EventArgs e)
+        private void btnSearchClear_Click(object? sender, EventArgs e)
         {
-            string selectedProgram = cmbFilterProgram.SelectedItem?.ToString() ?? cmbFilterProgram.Text;
+
+            txtSearch.Clear();
+
+           
+            string selectedProgram = cmbFilterProgram.SelectedIndex > 0 ? cmbFilterProgram.SelectedItem?.ToString() ?? "" : "";
             string selectedYear = GetSelectedFilterYear();
-            string searchText = txtSearch.Text;
 
-            LoadStudents(selectedProgram, selectedYear, searchText);
+            
+            LoadStudents(selectedProgram, selectedYear, "");
+   
+        
         }
-
+        //sorting records a-z
         private void btnSort_Click(object? sender, EventArgs e)
         {
             isSortedAlphabetically = !isSortedAlphabetically;
@@ -371,7 +389,7 @@ namespace plk_u_sis_wfa
             }
 
             DialogResult result = MessageBox.Show(
-                "Are you sure you want to delete this student?",
+                $"Are you sure you want to delete {selectedStudentId}?",
                 "Confirm Delete",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Warning);
@@ -429,22 +447,28 @@ namespace plk_u_sis_wfa
             ClearFields();
         }
 
-        // Action handler para sa bagong Clear Filter Button (btnClearFilter)
         private void btnClearFilter_Click(object? sender, EventArgs e)
         {
-            cmbFilterProgram.SelectedIndex = -1;
-            cmbFilterProgram.Text = "";
-            txtSearch.Clear();
+            if (cmbFilterProgram.Items.Count > 0)
+                cmbFilterProgram.SelectedIndex = 0;
+            else
+                cmbFilterProgram.SelectedIndex = -1;
 
             if (rbFilter1stYear != null) rbFilter1stYear.Checked = false;
             if (rbFilter2ndYear != null) rbFilter2ndYear.Checked = false;
             if (rbFilter3rdYear != null) rbFilter3rdYear.Checked = false;
             if (rbFilter4thYear != null) rbFilter4thYear.Checked = false;
 
-            // I-reload ang buong listahan mula sa database (Show All)
             LoadStudents();
         }
+        //automatic names showing up while typing in search bar
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            string selectedProgram = cmbFilterProgram.SelectedIndex > 0 ? cmbFilterProgram.SelectedItem?.ToString() ?? "" : "";
+            string selectedYear = GetSelectedFilterYear();
 
+            LoadStudents(selectedProgram, selectedYear, txtSearch.Text.Trim());
+        }
         private void lblProgram_Click(object sender, EventArgs e) { }
         private void cmbProgram_SelectedIndexChanged(object sender, EventArgs e) { }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) { }
@@ -466,5 +490,44 @@ namespace plk_u_sis_wfa
         private void label2_Click_1(object sender, EventArgs e) { }
         private void panel12_Paint(object sender, PaintEventArgs e) { }
         private void panel13_Paint(object sender, PaintEventArgs e) { }
+        private void cmbFilterProgram_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAdd_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnClear_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDelete_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pnlYeerLevel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void txtFullName_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDelete_Click_2(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblHeader_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

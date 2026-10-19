@@ -14,13 +14,36 @@ namespace plk_u_sis_wfa
             pbLogo.BorderStyle = BorderStyle.None;
 
             pbAdminIcon.SizeMode = PictureBoxSizeMode.Zoom;
+
+            this.Shown += (s, e) =>
+            {
+                lblAdminLogin.Focus();
+            };
         }
 
+        private void ckbShowPass_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ckbShowPass.Checked)
+            {
+                txtPasswordField.UseSystemPasswordChar = false;
+                txtPasswordField.PasswordChar = '\0';
+            }
+            else
+            {
+                txtPasswordField.UseSystemPasswordChar = true;
+            }
+        }
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+
+            lblClock.Text = DateTime.Now.ToString("hh:mm:ss tt");
+            lblDate.Text = DateTime.Now.ToString("dddd, MMMM dd, yyyy");
+        }
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
-    private void lblAdminId_Click(object sender, EventArgs e)
+        private void lblAdminId_Click(object sender, EventArgs e)
         {
 
         }
@@ -32,7 +55,7 @@ namespace plk_u_sis_wfa
 
         private void PLKLoginScreenForm_Load(object sender, EventArgs e)
         {
-
+            timer1_Tick(sender, e);
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -153,10 +176,108 @@ namespace plk_u_sis_wfa
             }
         }
 
+        private void txtPasswordField_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblCharter_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click_2(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblAdminLogin_Click(object sender, EventArgs e)
+        {
 
 
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click_2(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pnlLoginDashboard_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel4_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void ckbShowPass_CheckedChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCharter2_Click(object sender, EventArgs e)
+        {
+            PLKProgAndProf charterForm = new PLKProgAndProf();
+            charterForm.Show();
+        }
 
 
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
 
+        }
+
+        private void pictureBox1_Click_2(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCharter1_Click(object sender, EventArgs e)
+        {
+            PLKCharterBook charterForm = new PLKCharterBook();
+            charterForm.Show();
+        }
+
+        private void pbLogo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCharter3_Click(object sender, EventArgs e)
+        {
+            PLKHistory charterForm = new PLKHistory();
+            charterForm.Show();
+        }
     }
 }
