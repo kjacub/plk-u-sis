@@ -32,9 +32,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PLKLoginScreenForm));
             pnlAdminUnder = new Panel();
             pnlHeader = new Panel();
+            pbLogo = new PictureBox();
             lblUni = new Label();
             lblPLKU = new Label();
-            pbLogo = new PictureBox();
             pnlLoginDashboard = new Panel();
             pbCharter3 = new PictureBox();
             pnlCharter3 = new Panel();
@@ -102,9 +102,9 @@
             pnlHeader.BackColor = Color.FromArgb(255, 243, 242);
             pnlHeader.BackgroundImageLayout = ImageLayout.Center;
             pnlHeader.BorderStyle = BorderStyle.Fixed3D;
+            pnlHeader.Controls.Add(pbLogo);
             pnlHeader.Controls.Add(lblUni);
             pnlHeader.Controls.Add(lblPLKU);
-            pnlHeader.Controls.Add(pbLogo);
             pnlHeader.ForeColor = SystemColors.ControlText;
             pnlHeader.Location = new Point(66, 26);
             pnlHeader.Margin = new Padding(4, 3, 4, 3);
@@ -113,13 +113,25 @@
             pnlHeader.TabIndex = 7;
             pnlHeader.Paint += pnlHeader_Paint;
             // 
+            // pbLogo
+            // 
+            pbLogo.BackColor = Color.FromArgb(255, 243, 242);
+            pbLogo.Image = (Image)resources.GetObject("pbLogo.Image");
+            pbLogo.Location = new Point(368, -8);
+            pbLogo.Margin = new Padding(4, 3, 4, 3);
+            pbLogo.Name = "pbLogo";
+            pbLogo.Size = new Size(142, 138);
+            pbLogo.SizeMode = PictureBoxSizeMode.Zoom;
+            pbLogo.TabIndex = 37;
+            pbLogo.TabStop = false;
+            // 
             // lblUni
             // 
             lblUni.AutoSize = true;
             lblUni.BackColor = Color.Transparent;
             lblUni.Font = new Font("Constantia", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblUni.ForeColor = Color.FromArgb(137, 35, 91);
-            lblUni.Location = new Point(494, 81);
+            lblUni.Location = new Point(508, 81);
             lblUni.Name = "lblUni";
             lblUni.Size = new Size(174, 36);
             lblUni.TabIndex = 8;
@@ -132,26 +144,12 @@
             lblPLKU.BackColor = Color.Transparent;
             lblPLKU.Font = new Font("Constantia", 37.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblPLKU.ForeColor = Color.FromArgb(137, 35, 91);
-            lblPLKU.Location = new Point(483, 19);
+            lblPLKU.Location = new Point(497, 19);
             lblPLKU.Name = "lblPLKU";
             lblPLKU.Size = new Size(202, 77);
             lblPLKU.TabIndex = 7;
             lblPLKU.Text = "PLKU";
             lblPLKU.Click += lblPLKU_Click;
-            // 
-            // pbLogo
-            // 
-            pbLogo.BackColor = Color.Transparent;
-            pbLogo.BorderStyle = BorderStyle.Fixed3D;
-            pbLogo.Image = (Image)resources.GetObject("pbLogo.Image");
-            pbLogo.Location = new Point(335, -16);
-            pbLogo.Margin = new Padding(4, 3, 4, 3);
-            pbLogo.Name = "pbLogo";
-            pbLogo.Size = new Size(189, 161);
-            pbLogo.SizeMode = PictureBoxSizeMode.Zoom;
-            pbLogo.TabIndex = 6;
-            pbLogo.TabStop = false;
-            pbLogo.Click += pbLogo_Click;
             // 
             // pnlLoginDashboard
             // 
@@ -251,13 +249,13 @@
             // btnCharter2
             // 
             btnCharter2.FlatStyle = FlatStyle.Popup;
-            btnCharter2.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnCharter2.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             btnCharter2.ForeColor = Color.FromArgb(137, 35, 91);
             btnCharter2.Location = new Point(59, 220);
             btnCharter2.Name = "btnCharter2";
             btnCharter2.Size = new Size(309, 63);
             btnCharter2.TabIndex = 5;
-            btnCharter2.Text = "             Programs and Professors";
+            btnCharter2.Text = "          Programs and Faculty";
             btnCharter2.UseVisualStyleBackColor = true;
             btnCharter2.Click += btnCharter2_Click;
             // 
@@ -535,7 +533,7 @@
             lblFooter.BackColor = Color.Transparent;
             lblFooter.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblFooter.ForeColor = Color.FromArgb(255, 202, 228);
-            lblFooter.Location = new Point(375, 862);
+            lblFooter.Location = new Point(375, 856);
             lblFooter.Name = "lblFooter";
             lblFooter.Size = new Size(458, 23);
             lblFooter.TabIndex = 21;
@@ -655,7 +653,6 @@
 
         #endregion
         private Panel pnlHeader;
-        private PictureBox pbLogo;
         private Label lblPLKU;
         private Label lblUni;
         private Panel pnlAdminUnder;
@@ -698,5 +695,6 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private PictureBox pbDate;
         private PictureBox pbTime;
+        private PictureBox pbLogo;
     }
 }

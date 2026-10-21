@@ -37,7 +37,7 @@ namespace plk_u_sis_wfa
         private void SetupComboBoxPlaceholders()
         {
             cmbFilterProgram.Items.Clear();
-            cmbFilterProgram.Items.Add(" Select Program");
+            cmbFilterProgram.Items.Add("Select Program");
             cmbFilterProgram.Items.Add("BS in Cosmetic Science");
             cmbFilterProgram.Items.Add("BS in Floriculture and Botanical Design");
             cmbFilterProgram.Items.Add("BS in Historical Fashion");
@@ -206,15 +206,16 @@ namespace plk_u_sis_wfa
 
             txtSearch.Clear();
 
-           
+
             string selectedProgram = cmbFilterProgram.SelectedIndex > 0 ? cmbFilterProgram.SelectedItem?.ToString() ?? "" : "";
             string selectedYear = GetSelectedFilterYear();
 
-            
+
             LoadStudents(selectedProgram, selectedYear, "");
-   
-        
+
+
         }
+
         //sorting records a-z
         private void btnSort_Click(object? sender, EventArgs e)
         {
@@ -229,10 +230,10 @@ namespace plk_u_sis_wfa
                 btnSort.Text = "Sort A-Z";
             }
 
-            string selectedProgram = cmbFilterProgram.SelectedItem?.ToString() ?? cmbFilterProgram.Text;
+            string selectedProgram = cmbFilterProgram.SelectedIndex > 0 ? cmbFilterProgram.SelectedItem?.ToString() ?? "" : "";
             string selectedYear = GetSelectedFilterYear();
 
-            LoadStudents(selectedProgram, selectedYear, txtSearch.Text);
+            LoadStudents(selectedProgram, selectedYear, txtSearch.Text.Trim());
         }
 
         private string GetSelectedGender()
@@ -461,7 +462,8 @@ namespace plk_u_sis_wfa
 
             LoadStudents();
         }
-        //automatic names showing up while typing in search bar
+
+        //automatic names showing up while typing sa search bar
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             string selectedProgram = cmbFilterProgram.SelectedIndex > 0 ? cmbFilterProgram.SelectedItem?.ToString() ?? "" : "";
@@ -526,6 +528,11 @@ namespace plk_u_sis_wfa
         }
 
         private void lblHeader_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblSearch_Click(object sender, EventArgs e)
         {
 
         }

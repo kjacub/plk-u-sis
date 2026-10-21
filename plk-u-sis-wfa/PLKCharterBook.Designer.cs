@@ -35,6 +35,7 @@
             lblHeader = new Label();
             btnBack = new Button();
             pnlBody = new Panel();
+            lblFooter = new Label();
             pnl10 = new Panel();
             label29 = new Label();
             label30 = new Label();
@@ -66,6 +67,16 @@
             label4 = new Label();
             label3 = new Label();
             label2 = new Label();
+            panel1 = new Panel();
+            panel2 = new Panel();
+            panel3 = new Panel();
+            panel4 = new Panel();
+            panel5 = new Panel();
+            panel6 = new Panel();
+            panel7 = new Panel();
+            panel8 = new Panel();
+            panel9 = new Panel();
+            panel10 = new Panel();
             pnlHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             pnlBody.SuspendLayout();
@@ -83,7 +94,7 @@
             // 
             // pnlHeader
             // 
-            pnlHeader.BackColor = Color.FromArgb(137, 35, 91);
+            pnlHeader.BackColor = Color.FromArgb(255, 202, 228);
             pnlHeader.Controls.Add(lblHeader2);
             pnlHeader.Controls.Add(pictureBox1);
             pnlHeader.Controls.Add(lblHeader);
@@ -92,7 +103,7 @@
             pnlHeader.ForeColor = Color.FromArgb(255, 202, 228);
             pnlHeader.Location = new Point(0, 0);
             pnlHeader.Name = "pnlHeader";
-            pnlHeader.Size = new Size(1017, 91);
+            pnlHeader.Size = new Size(1902, 155);
             pnlHeader.TabIndex = 0;
             pnlHeader.Paint += panel1_Paint;
             // 
@@ -100,21 +111,22 @@
             // 
             lblHeader2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             lblHeader2.AutoSize = true;
-            lblHeader2.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
-            lblHeader2.ForeColor = Color.White;
-            lblHeader2.Location = new Point(330, 56);
+            lblHeader2.Font = new Font("Constantia", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblHeader2.ForeColor = Color.FromArgb(137, 35, 91);
+            lblHeader2.Location = new Point(683, 96);
             lblHeader2.Name = "lblHeader2";
-            lblHeader2.Size = new Size(332, 25);
+            lblHeader2.Size = new Size(540, 37);
             lblHeader2.TabIndex = 2;
             lblHeader2.Text = "Charter of 10 Rules and Amendments";
             // 
             // pictureBox1
             // 
             pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            pictureBox1.BackColor = Color.FromArgb(255, 202, 228);
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(936, 0);
+            pictureBox1.Location = new Point(1705, -12);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(81, 91);
+            pictureBox1.Size = new Size(195, 167);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
@@ -124,21 +136,21 @@
             // 
             lblHeader.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             lblHeader.AutoSize = true;
-            lblHeader.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblHeader.ForeColor = Color.White;
-            lblHeader.Location = new Point(171, 12);
+            lblHeader.Font = new Font("Constantia", 40.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblHeader.ForeColor = Color.FromArgb(137, 35, 91);
+            lblHeader.Location = new Point(180, 16);
             lblHeader.Name = "lblHeader";
-            lblHeader.Size = new Size(655, 41);
+            lblHeader.Size = new Size(1480, 82);
             lblHeader.TabIndex = 1;
             lblHeader.Text = "PLK UNIVERSITY CHARTER && AMENDMENTS";
             lblHeader.Click += lblHeader_Click;
             // 
             // btnBack
             // 
-            btnBack.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            btnBack.FlatStyle = FlatStyle.Popup;
             btnBack.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnBack.ForeColor = Color.FromArgb(137, 35, 91);
-            btnBack.Location = new Point(11, 27);
+            btnBack.Location = new Point(27, 35);
             btnBack.Name = "btnBack";
             btnBack.Size = new Size(80, 29);
             btnBack.TabIndex = 0;
@@ -152,6 +164,7 @@
             pnlBody.BackColor = Color.LightPink;
             pnlBody.BackgroundImage = (Image)resources.GetObject("pnlBody.BackgroundImage");
             pnlBody.BackgroundImageLayout = ImageLayout.Stretch;
+            pnlBody.Controls.Add(lblFooter);
             pnlBody.Controls.Add(pnl10);
             pnlBody.Controls.Add(pnl9);
             pnlBody.Controls.Add(pnl8);
@@ -164,22 +177,34 @@
             pnlBody.Controls.Add(pnl1);
             pnlBody.Dock = DockStyle.Fill;
             pnlBody.ForeColor = Color.FromArgb(255, 202, 228);
-            pnlBody.Location = new Point(0, 91);
+            pnlBody.Location = new Point(0, 0);
             pnlBody.Name = "pnlBody";
-            pnlBody.Size = new Size(1017, 964);
+            pnlBody.Size = new Size(1902, 1033);
             pnlBody.TabIndex = 1;
             pnlBody.Paint += panel2_Paint;
             // 
+            // lblFooter
+            // 
+            lblFooter.AutoSize = true;
+            lblFooter.BackColor = Color.Transparent;
+            lblFooter.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblFooter.ForeColor = Color.FromArgb(255, 202, 228);
+            lblFooter.Location = new Point(730, 986);
+            lblFooter.Name = "lblFooter";
+            lblFooter.Size = new Size(458, 23);
+            lblFooter.TabIndex = 22;
+            lblFooter.Text = "© 2026 Princess Leigh Kate University. All Rights Reserved.";
+            // 
             // pnl10
             // 
-            pnl10.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            pnl10.BackColor = Color.White;
+            pnl10.BackColor = Color.FromArgb(255, 243, 242);
             pnl10.BorderStyle = BorderStyle.Fixed3D;
-            pnl10.Controls.Add(label29);
             pnl10.Controls.Add(label30);
-            pnl10.Location = new Point(59, 994);
+            pnl10.Controls.Add(panel6);
+            pnl10.Controls.Add(label29);
+            pnl10.Location = new Point(970, 715);
             pnl10.Name = "pnl10";
-            pnl10.Size = new Size(842, 57);
+            pnl10.Size = new Size(871, 101);
             pnl10.TabIndex = 9;
             // 
             // label29
@@ -188,7 +213,7 @@
             label29.AutoSize = true;
             label29.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label29.ForeColor = Color.FromArgb(137, 35, 91);
-            label29.Location = new Point(101, 39);
+            label29.Location = new Point(101, 50);
             label29.Name = "label29";
             label29.Size = new Size(652, 40);
             label29.TabIndex = 1;
@@ -199,9 +224,10 @@
             // 
             label30.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label30.AutoSize = true;
+            label30.BackColor = Color.FromArgb(255, 219, 219);
             label30.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
             label30.ForeColor = Color.FromArgb(137, 35, 91);
-            label30.Location = new Point(241, 1);
+            label30.Location = new Point(241, 7);
             label30.Name = "label30";
             label30.Size = new Size(395, 32);
             label30.TabIndex = 0;
@@ -209,14 +235,14 @@
             // 
             // pnl9
             // 
-            pnl9.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            pnl9.BackColor = Color.White;
+            pnl9.BackColor = Color.FromArgb(255, 243, 242);
             pnl9.BorderStyle = BorderStyle.Fixed3D;
-            pnl9.Controls.Add(label19);
             pnl9.Controls.Add(label20);
-            pnl9.Location = new Point(59, 895);
+            pnl9.Controls.Add(panel7);
+            pnl9.Controls.Add(label19);
+            pnl9.Location = new Point(970, 596);
             pnl9.Name = "pnl9";
-            pnl9.Size = new Size(844, 89);
+            pnl9.Size = new Size(871, 100);
             pnl9.TabIndex = 8;
             // 
             // label19
@@ -225,7 +251,7 @@
             label19.AutoSize = true;
             label19.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label19.ForeColor = Color.FromArgb(137, 35, 91);
-            label19.Location = new Point(105, 39);
+            label19.Location = new Point(105, 50);
             label19.Name = "label19";
             label19.Size = new Size(657, 40);
             label19.TabIndex = 1;
@@ -235,24 +261,26 @@
             // label20
             // 
             label20.AutoSize = true;
+            label20.BackColor = Color.FromArgb(255, 219, 219);
             label20.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
             label20.ForeColor = Color.FromArgb(137, 35, 91);
-            label20.Location = new Point(280, 1);
+            label20.Location = new Point(280, 6);
             label20.Name = "label20";
             label20.Size = new Size(291, 32);
             label20.TabIndex = 0;
             label20.Text = "9. Community && Service";
+            label20.Click += label20_Click;
             // 
             // pnl8
             // 
-            pnl8.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            pnl8.BackColor = Color.White;
+            pnl8.BackColor = Color.FromArgb(255, 243, 242);
             pnl8.BorderStyle = BorderStyle.Fixed3D;
-            pnl8.Controls.Add(label17);
             pnl8.Controls.Add(label18);
-            pnl8.Location = new Point(59, 797);
+            pnl8.Controls.Add(panel8);
+            pnl8.Controls.Add(label17);
+            pnl8.Location = new Point(970, 483);
             pnl8.Name = "pnl8";
-            pnl8.Size = new Size(844, 89);
+            pnl8.Size = new Size(871, 96);
             pnl8.TabIndex = 7;
             // 
             // label17
@@ -261,7 +289,7 @@
             label17.AutoSize = true;
             label17.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label17.ForeColor = Color.FromArgb(137, 35, 91);
-            label17.Location = new Point(137, 37);
+            label17.Location = new Point(137, 50);
             label17.Name = "label17";
             label17.Size = new Size(579, 40);
             label17.TabIndex = 1;
@@ -272,9 +300,10 @@
             // 
             label18.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label18.AutoSize = true;
+            label18.BackColor = Color.FromArgb(255, 219, 219);
             label18.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
             label18.ForeColor = Color.FromArgb(137, 35, 91);
-            label18.Location = new Point(249, 3);
+            label18.Location = new Point(249, 6);
             label18.Name = "label18";
             label18.Size = new Size(362, 32);
             label18.TabIndex = 0;
@@ -282,14 +311,14 @@
             // 
             // pnl7
             // 
-            pnl7.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            pnl7.BackColor = Color.White;
+            pnl7.BackColor = Color.FromArgb(255, 243, 242);
             pnl7.BorderStyle = BorderStyle.Fixed3D;
-            pnl7.Controls.Add(label15);
             pnl7.Controls.Add(label16);
-            pnl7.Location = new Point(59, 699);
+            pnl7.Controls.Add(panel9);
+            pnl7.Controls.Add(label15);
+            pnl7.Location = new Point(970, 368);
             pnl7.Name = "pnl7";
-            pnl7.Size = new Size(844, 89);
+            pnl7.Size = new Size(871, 101);
             pnl7.TabIndex = 6;
             // 
             // label15
@@ -298,7 +327,7 @@
             label15.AutoSize = true;
             label15.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label15.ForeColor = Color.FromArgb(137, 35, 91);
-            label15.Location = new Point(49, 41);
+            label15.Location = new Point(49, 53);
             label15.Name = "label15";
             label15.Size = new Size(762, 40);
             label15.TabIndex = 1;
@@ -309,6 +338,7 @@
             // 
             label16.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label16.AutoSize = true;
+            label16.BackColor = Color.FromArgb(255, 219, 219);
             label16.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
             label16.ForeColor = Color.FromArgb(137, 35, 91);
             label16.Location = new Point(220, 3);
@@ -319,14 +349,14 @@
             // 
             // pnl6
             // 
-            pnl6.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            pnl6.BackColor = Color.White;
+            pnl6.BackColor = Color.FromArgb(255, 243, 242);
             pnl6.BorderStyle = BorderStyle.Fixed3D;
-            pnl6.Controls.Add(label13);
             pnl6.Controls.Add(label14);
-            pnl6.Location = new Point(59, 575);
+            pnl6.Controls.Add(panel10);
+            pnl6.Controls.Add(label13);
+            pnl6.Location = new Point(970, 233);
             pnl6.Name = "pnl6";
-            pnl6.Size = new Size(844, 113);
+            pnl6.Size = new Size(871, 121);
             pnl6.TabIndex = 5;
             // 
             // label13
@@ -335,7 +365,7 @@
             label13.AutoSize = true;
             label13.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label13.ForeColor = Color.FromArgb(137, 35, 91);
-            label13.Location = new Point(21, 41);
+            label13.Location = new Point(21, 52);
             label13.Name = "label13";
             label13.Size = new Size(824, 60);
             label13.TabIndex = 1;
@@ -346,9 +376,10 @@
             // 
             label14.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label14.AutoSize = true;
+            label14.BackColor = Color.FromArgb(255, 219, 219);
             label14.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
             label14.ForeColor = Color.FromArgb(137, 35, 91);
-            label14.Location = new Point(229, 3);
+            label14.Location = new Point(229, 6);
             label14.Name = "label14";
             label14.Size = new Size(400, 32);
             label14.TabIndex = 0;
@@ -357,14 +388,14 @@
             // 
             // pnl5
             // 
-            pnl5.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            pnl5.BackColor = Color.White;
+            pnl5.BackColor = Color.FromArgb(255, 243, 242);
             pnl5.BorderStyle = BorderStyle.Fixed3D;
-            pnl5.Controls.Add(label11);
             pnl5.Controls.Add(label12);
-            pnl5.Location = new Point(59, 476);
+            pnl5.Controls.Add(panel5);
+            pnl5.Controls.Add(label11);
+            pnl5.Location = new Point(57, 735);
             pnl5.Name = "pnl5";
-            pnl5.Size = new Size(844, 89);
+            pnl5.Size = new Size(871, 98);
             pnl5.TabIndex = 4;
             pnl5.Paint += pnl5_Paint;
             // 
@@ -374,7 +405,7 @@
             label11.AutoSize = true;
             label11.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label11.ForeColor = Color.FromArgb(137, 35, 91);
-            label11.Location = new Point(71, 39);
+            label11.Location = new Point(71, 50);
             label11.Name = "label11";
             label11.Size = new Size(709, 40);
             label11.TabIndex = 1;
@@ -385,9 +416,10 @@
             // 
             label12.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label12.AutoSize = true;
+            label12.BackColor = Color.FromArgb(255, 219, 219);
             label12.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
             label12.ForeColor = Color.FromArgb(137, 35, 91);
-            label12.Location = new Point(230, 1);
+            label12.Location = new Point(230, 5);
             label12.Name = "label12";
             label12.Size = new Size(405, 32);
             label12.TabIndex = 0;
@@ -396,14 +428,14 @@
             // 
             // pnl4
             // 
-            pnl4.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            pnl4.BackColor = Color.White;
+            pnl4.BackColor = Color.FromArgb(255, 243, 242);
             pnl4.BorderStyle = BorderStyle.Fixed3D;
-            pnl4.Controls.Add(label9);
             pnl4.Controls.Add(label10);
-            pnl4.Location = new Point(59, 377);
+            pnl4.Controls.Add(panel4);
+            pnl4.Controls.Add(label9);
+            pnl4.Location = new Point(57, 621);
             pnl4.Name = "pnl4";
-            pnl4.Size = new Size(844, 89);
+            pnl4.Size = new Size(871, 100);
             pnl4.TabIndex = 3;
             // 
             // label9
@@ -412,7 +444,7 @@
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label9.ForeColor = Color.FromArgb(137, 35, 91);
-            label9.Location = new Point(22, 39);
+            label9.Location = new Point(22, 51);
             label9.Name = "label9";
             label9.Size = new Size(818, 40);
             label9.TabIndex = 1;
@@ -423,9 +455,10 @@
             // 
             label10.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label10.AutoSize = true;
+            label10.BackColor = Color.FromArgb(255, 219, 219);
             label10.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
             label10.ForeColor = Color.FromArgb(137, 35, 91);
-            label10.Location = new Point(305, 1);
+            label10.Location = new Point(305, 5);
             label10.Name = "label10";
             label10.Size = new Size(257, 32);
             label10.TabIndex = 0;
@@ -433,14 +466,14 @@
             // 
             // pnl3
             // 
-            pnl3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            pnl3.BackColor = Color.White;
+            pnl3.BackColor = Color.FromArgb(255, 243, 242);
             pnl3.BorderStyle = BorderStyle.Fixed3D;
-            pnl3.Controls.Add(label6);
             pnl3.Controls.Add(label8);
-            pnl3.Location = new Point(59, 279);
+            pnl3.Controls.Add(panel3);
+            pnl3.Controls.Add(label6);
+            pnl3.Location = new Point(57, 509);
             pnl3.Name = "pnl3";
-            pnl3.Size = new Size(844, 89);
+            pnl3.Size = new Size(871, 98);
             pnl3.TabIndex = 2;
             // 
             // label6
@@ -449,7 +482,7 @@
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label6.ForeColor = Color.FromArgb(137, 35, 91);
-            label6.Location = new Point(106, 39);
+            label6.Location = new Point(106, 50);
             label6.Name = "label6";
             label6.Size = new Size(640, 40);
             label6.TabIndex = 1;
@@ -461,9 +494,10 @@
             // 
             label8.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label8.AutoSize = true;
+            label8.BackColor = Color.FromArgb(255, 219, 219);
             label8.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
             label8.ForeColor = Color.FromArgb(137, 35, 91);
-            label8.Location = new Point(305, 1);
+            label8.Location = new Point(305, 5);
             label8.Name = "label8";
             label8.Size = new Size(252, 32);
             label8.TabIndex = 0;
@@ -472,14 +506,14 @@
             // 
             // pnl2
             // 
-            pnl2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            pnl2.BackColor = Color.White;
+            pnl2.BackColor = Color.FromArgb(255, 243, 242);
             pnl2.BorderStyle = BorderStyle.Fixed3D;
-            pnl2.Controls.Add(label7);
             pnl2.Controls.Add(label5);
-            pnl2.Location = new Point(59, 180);
+            pnl2.Controls.Add(panel2);
+            pnl2.Controls.Add(label7);
+            pnl2.Location = new Point(57, 399);
             pnl2.Name = "pnl2";
-            pnl2.Size = new Size(844, 89);
+            pnl2.Size = new Size(871, 98);
             pnl2.TabIndex = 1;
             // 
             // label7
@@ -488,7 +522,7 @@
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label7.ForeColor = Color.FromArgb(137, 35, 91);
-            label7.Location = new Point(3, 41);
+            label7.Location = new Point(3, 49);
             label7.Name = "label7";
             label7.Size = new Size(857, 40);
             label7.TabIndex = 1;
@@ -499,9 +533,10 @@
             // 
             label5.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label5.AutoSize = true;
+            label5.BackColor = Color.FromArgb(255, 219, 219);
             label5.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
             label5.ForeColor = Color.FromArgb(137, 35, 91);
-            label5.Location = new Point(307, 3);
+            label5.Location = new Point(307, 6);
             label5.Name = "label5";
             label5.Size = new Size(256, 32);
             label5.TabIndex = 0;
@@ -510,15 +545,15 @@
             // 
             // pnl1
             // 
-            pnl1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            pnl1.BackColor = Color.White;
+            pnl1.BackColor = Color.FromArgb(255, 243, 242);
             pnl1.BorderStyle = BorderStyle.Fixed3D;
+            pnl1.Controls.Add(label2);
+            pnl1.Controls.Add(panel1);
             pnl1.Controls.Add(label4);
             pnl1.Controls.Add(label3);
-            pnl1.Controls.Add(label2);
-            pnl1.Location = new Point(59, 21);
+            pnl1.Location = new Point(57, 223);
             pnl1.Name = "pnl1";
-            pnl1.Size = new Size(844, 151);
+            pnl1.Size = new Size(871, 164);
             pnl1.TabIndex = 0;
             // 
             // label4
@@ -527,7 +562,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.FromArgb(137, 35, 91);
-            label4.Location = new Point(423, 43);
+            label4.Location = new Point(423, 51);
             label4.Name = "label4";
             label4.Size = new Size(433, 100);
             label4.TabIndex = 2;
@@ -542,7 +577,7 @@
             label3.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.FromArgb(137, 35, 91);
             label3.ImageAlign = ContentAlignment.BottomLeft;
-            label3.Location = new Point(8, 43);
+            label3.Location = new Point(8, 50);
             label3.Name = "label3";
             label3.Size = new Size(412, 80);
             label3.TabIndex = 1;
@@ -554,28 +589,113 @@
             // 
             label2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label2.AutoSize = true;
+            label2.BackColor = Color.FromArgb(255, 219, 219);
             label2.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
             label2.ForeColor = Color.FromArgb(137, 35, 91);
-            label2.Location = new Point(314, 3);
+            label2.Location = new Point(314, 6);
             label2.Name = "label2";
             label2.Size = new Size(236, 32);
             label2.TabIndex = 0;
             label2.Text = "1. Vision && Mission";
             // 
+            // panel1
+            // 
+            panel1.BackColor = Color.FromArgb(255, 219, 219);
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(869, 45);
+            panel1.TabIndex = 3;
+            // 
+            // panel2
+            // 
+            panel2.BackColor = Color.FromArgb(255, 219, 219);
+            panel2.Location = new Point(-1, 0);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(869, 45);
+            panel2.TabIndex = 4;
+            // 
+            // panel3
+            // 
+            panel3.BackColor = Color.FromArgb(255, 219, 219);
+            panel3.Location = new Point(-1, 0);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(869, 45);
+            panel3.TabIndex = 5;
+            // 
+            // panel4
+            // 
+            panel4.BackColor = Color.FromArgb(255, 219, 219);
+            panel4.Location = new Point(-1, 0);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(869, 45);
+            panel4.TabIndex = 6;
+            // 
+            // panel5
+            // 
+            panel5.BackColor = Color.FromArgb(255, 219, 219);
+            panel5.Location = new Point(-1, 0);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(869, 45);
+            panel5.TabIndex = 6;
+            // 
+            // panel6
+            // 
+            panel6.BackColor = Color.FromArgb(255, 219, 219);
+            panel6.Location = new Point(-1, 0);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(869, 45);
+            panel6.TabIndex = 6;
+            // 
+            // panel7
+            // 
+            panel7.BackColor = Color.FromArgb(255, 219, 219);
+            panel7.Location = new Point(-1, 0);
+            panel7.Name = "panel7";
+            panel7.Size = new Size(869, 45);
+            panel7.TabIndex = 6;
+            // 
+            // panel8
+            // 
+            panel8.BackColor = Color.FromArgb(255, 219, 219);
+            panel8.Location = new Point(-1, 0);
+            panel8.Name = "panel8";
+            panel8.Size = new Size(869, 45);
+            panel8.TabIndex = 6;
+            // 
+            // panel9
+            // 
+            panel9.BackColor = Color.FromArgb(255, 219, 219);
+            panel9.Location = new Point(-1, 0);
+            panel9.Name = "panel9";
+            panel9.Size = new Size(869, 45);
+            panel9.TabIndex = 6;
+            // 
+            // panel10
+            // 
+            panel10.BackColor = Color.FromArgb(255, 219, 219);
+            panel10.Location = new Point(-1, 0);
+            panel10.Name = "panel10";
+            panel10.Size = new Size(869, 45);
+            panel10.TabIndex = 6;
+            // 
             // PLKCharterBook
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1017, 1055);
-            Controls.Add(pnlBody);
+            AutoScroll = true;
+            ClientSize = new Size(1902, 1033);
             Controls.Add(pnlHeader);
+            Controls.Add(pnlBody);
             Name = "PLKCharterBook";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "PLK University Charter Book";
+            WindowState = FormWindowState.Maximized;
+            Load += PLKCharterBook_Load;
             pnlHeader.ResumeLayout(false);
             pnlHeader.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             pnlBody.ResumeLayout(false);
+            pnlBody.PerformLayout();
             pnl10.ResumeLayout(false);
             pnl10.PerformLayout();
             pnl9.ResumeLayout(false);
@@ -638,5 +758,16 @@
         private Panel pnl10;
         private Label label29;
         private Label label30;
+        private Label lblFooter;
+        private Panel panel6;
+        private Panel panel5;
+        private Panel panel4;
+        private Panel panel3;
+        private Panel panel2;
+        private Panel panel1;
+        private Panel panel7;
+        private Panel panel8;
+        private Panel panel9;
+        private Panel panel10;
     }
 }
