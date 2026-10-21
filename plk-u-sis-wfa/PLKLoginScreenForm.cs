@@ -249,6 +249,7 @@ namespace plk_u_sis_wfa
         private void btnCharter2_Click(object sender, EventArgs e)
         {
             PLKProgAndProf charterForm = new PLKProgAndProf();
+            charterForm.WindowState = FormWindowState.Maximized;
             charterForm.Show();
         }
 
@@ -266,6 +267,9 @@ namespace plk_u_sis_wfa
         private void btnCharter1_Click(object sender, EventArgs e)
         {
             PLKCharterBook charterForm = new PLKCharterBook();
+
+            charterForm.WindowState = FormWindowState.Maximized;
+
             charterForm.Show();
         }
 
@@ -277,6 +281,7 @@ namespace plk_u_sis_wfa
         private void btnCharter3_Click(object sender, EventArgs e)
         {
             PLKHistory charterForm = new PLKHistory();
+            charterForm.WindowState = FormWindowState.Maximized;
             charterForm.Show();
         }
     }

@@ -14,5 +14,10 @@ namespace plk_u_sis_wfa
         {
             InitializeComponent();
         }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
