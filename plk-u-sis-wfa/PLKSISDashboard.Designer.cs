@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PLKSISDashboard));
             dgvStudentRecords = new DataGridView();
             txtStudentId = new TextBox();
@@ -89,6 +89,7 @@
             label1 = new Label();
             lblHeader = new Label();
             lblFooter = new Label();
+            btnExit = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvStudentRecords).BeginInit();
             pnlStudentRecord.SuspendLayout();
             pnlStudentId.SuspendLayout();
@@ -113,35 +114,35 @@
             dgvStudentRecords.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             dgvStudentRecords.BackgroundColor = Color.FromArgb(255, 202, 228);
             dgvStudentRecords.BorderStyle = BorderStyle.Fixed3D;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(255, 202, 228);
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(255, 243, 242);
-            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgvStudentRecords.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(255, 202, 228);
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(255, 243, 242);
+            dataGridViewCellStyle4.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dgvStudentRecords.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dgvStudentRecords.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(255, 243, 242);
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(137, 35, 91);
-            dataGridViewCellStyle2.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dgvStudentRecords.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(255, 243, 242);
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle5.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(137, 35, 91);
+            dataGridViewCellStyle5.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
+            dgvStudentRecords.DefaultCellStyle = dataGridViewCellStyle5;
             dgvStudentRecords.EnableHeadersVisualStyles = false;
             dgvStudentRecords.GridColor = Color.FromArgb(137, 35, 91);
             dgvStudentRecords.Location = new Point(728, 295);
             dgvStudentRecords.Name = "dgvStudentRecords";
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(255, 243, 242);
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(137, 35, 91);
-            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dgvStudentRecords.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle6.BackColor = Color.FromArgb(255, 243, 242);
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle6.ForeColor = Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(137, 35, 91);
+            dataGridViewCellStyle6.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            dgvStudentRecords.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             dgvStudentRecords.RowHeadersWidth = 51;
             dgvStudentRecords.Size = new Size(869, 676);
             dgvStudentRecords.TabIndex = 0;
@@ -360,6 +361,7 @@
             btnSearchClear.TabIndex = 18;
             btnSearchClear.Text = "Clear";
             btnSearchClear.UseVisualStyleBackColor = false;
+            btnSearchClear.Click += btnSearchClear_Click_1;
             // 
             // btnFilter
             // 
@@ -796,6 +798,19 @@
             lblFooter.TabIndex = 40;
             lblFooter.Text = "PLK University · Student Information System";
             // 
+            // btnExit
+            // 
+            btnExit.BackColor = Color.FromArgb(255, 202, 228);
+            btnExit.FlatStyle = FlatStyle.Popup;
+            btnExit.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
+            btnExit.Location = new Point(1637, 495);
+            btnExit.Name = "btnExit";
+            btnExit.Size = new Size(228, 49);
+            btnExit.TabIndex = 41;
+            btnExit.Text = "Exit Dashbaord";
+            btnExit.UseVisualStyleBackColor = false;
+            btnExit.Click += btnExit_Click;
+            // 
             // PLKSISDashboard
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -803,6 +818,7 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1902, 1033);
+            Controls.Add(btnExit);
             Controls.Add(lblFooter);
             Controls.Add(pnlHeader);
             Controls.Add(pbDelete);
@@ -908,5 +924,6 @@
         private Label label1;
         private Label lblFooter;
         private PictureBox pbLogo;
+        private Button btnExit;
     }
 }

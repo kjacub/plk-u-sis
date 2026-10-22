@@ -19,5 +19,10 @@ namespace plk_u_sis_wfa
         {
             this.Close();
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

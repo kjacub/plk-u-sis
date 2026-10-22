@@ -21,6 +21,7 @@ namespace plk_u_sis_wfa
             };
         }
 
+        // show admin password option
         private void ckbShowPass_CheckedChanged(object sender, EventArgs e)
         {
             if (ckbShowPass.Checked)
@@ -33,12 +34,19 @@ namespace plk_u_sis_wfa
                 txtPasswordField.UseSystemPasswordChar = true;
             }
         }
+
+        // date & time 
         private void timer1_Tick(object sender, EventArgs e)
         {
 
             lblClock.Text = DateTime.Now.ToString("hh:mm:ss tt");
             lblDate.Text = DateTime.Now.ToString("dddd, MMMM dd, yyyy");
         }
+        private void PLKLoginScreenForm_Load(object sender, EventArgs e)
+        {
+            timer1_Tick(sender, e);
+        }
+
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
@@ -51,11 +59,6 @@ namespace plk_u_sis_wfa
         private void picUserIcon_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void PLKLoginScreenForm_Load(object sender, EventArgs e)
-        {
-            timer1_Tick(sender, e);
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -138,16 +141,16 @@ namespace plk_u_sis_wfa
 
         }
 
+        // admin ID & password checker
         private void btnLogIn_Click(object sender, EventArgs e)
         {
             string enteredAdmin = txtAdminIdField.Text.Trim();
             string enteredPassword = txtPasswordField.Text.Trim();
 
 
-            string[] allowedAdmins = { "8520", "8520", "8520" };
+            string[] allowedAdmins = { "admin05611", "admin14090", "admin06154" };
 
-
-            string correctPassword = "plk";
+            string correctPassword = "projecthailmary";
 
 
             if (string.IsNullOrEmpty(enteredAdmin) || string.IsNullOrEmpty(enteredPassword))
@@ -246,6 +249,7 @@ namespace plk_u_sis_wfa
 
         }
 
+        // button function for programs & faculty
         private void btnCharter2_Click(object sender, EventArgs e)
         {
             PLKProgAndProf charterForm = new PLKProgAndProf();
@@ -263,7 +267,7 @@ namespace plk_u_sis_wfa
         {
 
         }
-
+        // button function for charter book
         private void btnCharter1_Click(object sender, EventArgs e)
         {
             PLKCharterBook charterForm = new PLKCharterBook();
@@ -277,7 +281,7 @@ namespace plk_u_sis_wfa
         {
 
         }
-
+        // button function for university history
         private void btnCharter3_Click(object sender, EventArgs e)
         {
             PLKHistory charterForm = new PLKHistory();
