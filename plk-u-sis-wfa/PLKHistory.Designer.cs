@@ -52,6 +52,7 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1902, 155);
             panel1.TabIndex = 0;
+            panel1.Paint += panel1_Paint;
             // 
             // lblHeader2
             // 
@@ -59,11 +60,11 @@
             lblHeader2.AutoSize = true;
             lblHeader2.Font = new Font("Constantia", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblHeader2.ForeColor = Color.FromArgb(137, 35, 91);
-            lblHeader2.Location = new Point(674, 95);
+            lblHeader2.Location = new Point(676, 95);
             lblHeader2.Name = "lblHeader2";
-            lblHeader2.Size = new Size(540, 37);
+            lblHeader2.Size = new Size(470, 37);
             lblHeader2.TabIndex = 5;
-            lblHeader2.Text = "Charter of 10 Rules and Amendments";
+            lblHeader2.Text = "A Brief History of the University\r\n";
             // 
             // pictureBox1
             // 

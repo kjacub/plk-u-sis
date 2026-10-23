@@ -31,10 +31,6 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PLKLoginScreenForm));
             pnlAdminUnder = new Panel();
-            pnlHeader = new Panel();
-            pbLogo = new PictureBox();
-            lblUni = new Label();
-            lblPLKU = new Label();
             pnlLoginDashboard = new Panel();
             pbCharter3 = new PictureBox();
             pnlCharter3 = new Panel();
@@ -57,7 +53,6 @@
             pbPasswordIcon = new PictureBox();
             pnlUnder = new Panel();
             btnLogInn = new Button();
-            panel1 = new Panel();
             panel2 = new Panel();
             lblAdminLogin = new Label();
             pnlLoginField = new Panel();
@@ -65,6 +60,7 @@
             lblMessage2 = new Label();
             lblMessage1 = new Label();
             lblMessage3 = new Label();
+            panel1 = new Panel();
             lblFooter = new Label();
             lblClock = new Label();
             lblDate = new Label();
@@ -73,8 +69,12 @@
             pbTime = new PictureBox();
             pbDate = new PictureBox();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            pnlHeader.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pbLogo).BeginInit();
+            lblPLKU = new Label();
+            lblUni = new Label();
+            pnlHeader = new Panel();
+            pbLogo = new PictureBox();
+            pictureBox1 = new PictureBox();
+            lblHeader = new Label();
             pnlLoginDashboard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbCharter3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbCharter2).BeginInit();
@@ -87,6 +87,9 @@
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbTime).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbDate).BeginInit();
+            pnlHeader.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pbLogo).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // pnlAdminUnder
@@ -96,60 +99,6 @@
             pnlAdminUnder.Name = "pnlAdminUnder";
             pnlAdminUnder.Size = new Size(261, 2);
             pnlAdminUnder.TabIndex = 12;
-            // 
-            // pnlHeader
-            // 
-            pnlHeader.BackColor = Color.FromArgb(255, 243, 242);
-            pnlHeader.BackgroundImageLayout = ImageLayout.Center;
-            pnlHeader.BorderStyle = BorderStyle.Fixed3D;
-            pnlHeader.Controls.Add(pbLogo);
-            pnlHeader.Controls.Add(lblUni);
-            pnlHeader.Controls.Add(lblPLKU);
-            pnlHeader.ForeColor = SystemColors.ControlText;
-            pnlHeader.Location = new Point(66, 26);
-            pnlHeader.Margin = new Padding(4, 3, 4, 3);
-            pnlHeader.Name = "pnlHeader";
-            pnlHeader.Size = new Size(1063, 133);
-            pnlHeader.TabIndex = 7;
-            pnlHeader.Paint += pnlHeader_Paint;
-            // 
-            // pbLogo
-            // 
-            pbLogo.BackColor = Color.FromArgb(255, 243, 242);
-            pbLogo.Image = (Image)resources.GetObject("pbLogo.Image");
-            pbLogo.Location = new Point(368, -8);
-            pbLogo.Margin = new Padding(4, 3, 4, 3);
-            pbLogo.Name = "pbLogo";
-            pbLogo.Size = new Size(142, 138);
-            pbLogo.SizeMode = PictureBoxSizeMode.Zoom;
-            pbLogo.TabIndex = 37;
-            pbLogo.TabStop = false;
-            // 
-            // lblUni
-            // 
-            lblUni.AutoSize = true;
-            lblUni.BackColor = Color.Transparent;
-            lblUni.Font = new Font("Constantia", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblUni.ForeColor = Color.FromArgb(137, 35, 91);
-            lblUni.Location = new Point(508, 81);
-            lblUni.Name = "lblUni";
-            lblUni.Size = new Size(174, 36);
-            lblUni.TabIndex = 8;
-            lblUni.Text = "PRINCESS LEIGH KATE\r\nUNIVERSITY\r\n";
-            lblUni.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // lblPLKU
-            // 
-            lblPLKU.AutoSize = true;
-            lblPLKU.BackColor = Color.Transparent;
-            lblPLKU.Font = new Font("Constantia", 37.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblPLKU.ForeColor = Color.FromArgb(137, 35, 91);
-            lblPLKU.Location = new Point(497, 19);
-            lblPLKU.Name = "lblPLKU";
-            lblPLKU.Size = new Size(202, 77);
-            lblPLKU.TabIndex = 7;
-            lblPLKU.Text = "PLKU";
-            lblPLKU.Click += lblPLKU_Click;
             // 
             // pnlLoginDashboard
             // 
@@ -419,14 +368,6 @@
             btnLogInn.UseVisualStyleBackColor = false;
             btnLogInn.Click += btnLogIn_Click;
             // 
-            // panel1
-            // 
-            panel1.BackColor = Color.FromArgb(137, 35, 91);
-            panel1.Location = new Point(104, 332);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(420, 2);
-            panel1.TabIndex = 17;
-            // 
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(137, 35, 91);
@@ -495,7 +436,7 @@
             lblMessage2.BackColor = Color.Transparent;
             lblMessage2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblMessage2.ForeColor = Color.FromArgb(137, 35, 91);
-            lblMessage2.Location = new Point(165, 141);
+            lblMessage2.Location = new Point(165, 134);
             lblMessage2.Name = "lblMessage2";
             lblMessage2.Size = new Size(306, 20);
             lblMessage2.TabIndex = 21;
@@ -508,7 +449,7 @@
             lblMessage1.BackColor = Color.Transparent;
             lblMessage1.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblMessage1.ForeColor = Color.FromArgb(137, 35, 91);
-            lblMessage1.Location = new Point(36, 114);
+            lblMessage1.Location = new Point(36, 108);
             lblMessage1.Name = "lblMessage1";
             lblMessage1.Size = new Size(555, 23);
             lblMessage1.TabIndex = 20;
@@ -526,6 +467,14 @@
             lblMessage3.Size = new Size(573, 67);
             lblMessage3.TabIndex = 19;
             lblMessage3.Text = "Welcome back, Admin!";
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.FromArgb(137, 35, 91);
+            panel1.Location = new Point(104, 332);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(420, 2);
+            panel1.TabIndex = 17;
             // 
             // lblFooter
             // 
@@ -545,7 +494,7 @@
             lblClock.BackColor = Color.Transparent;
             lblClock.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold);
             lblClock.ForeColor = Color.FromArgb(137, 35, 91);
-            lblClock.Location = new Point(86, 84);
+            lblClock.Location = new Point(86, 89);
             lblClock.Name = "lblClock";
             lblClock.Size = new Size(67, 32);
             lblClock.TabIndex = 22;
@@ -557,7 +506,7 @@
             lblDate.BackColor = Color.Transparent;
             lblDate.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold);
             lblDate.ForeColor = Color.FromArgb(137, 35, 91);
-            lblDate.Location = new Point(86, 36);
+            lblDate.Location = new Point(86, 41);
             lblDate.Name = "lblDate";
             lblDate.Size = new Size(66, 32);
             lblDate.TabIndex = 23;
@@ -577,7 +526,7 @@
             groupBox1.Controls.Add(pbDate);
             groupBox1.Controls.Add(lblClock);
             groupBox1.FlatStyle = FlatStyle.Flat;
-            groupBox1.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            groupBox1.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
             groupBox1.ForeColor = Color.FromArgb(137, 35, 91);
             groupBox1.Location = new Point(703, 632);
             groupBox1.Name = "groupBox1";
@@ -590,7 +539,7 @@
             // pbTime
             // 
             pbTime.Image = (Image)resources.GetObject("pbTime.Image");
-            pbTime.Location = new Point(33, 74);
+            pbTime.Location = new Point(33, 79);
             pbTime.Name = "pbTime";
             pbTime.Size = new Size(41, 51);
             pbTime.SizeMode = PictureBoxSizeMode.Zoom;
@@ -600,13 +549,90 @@
             // pbDate
             // 
             pbDate.Image = (Image)resources.GetObject("pbDate.Image");
-            pbDate.Location = new Point(33, 29);
+            pbDate.Location = new Point(33, 34);
             pbDate.Name = "pbDate";
             pbDate.Size = new Size(41, 51);
             pbDate.SizeMode = PictureBoxSizeMode.Zoom;
             pbDate.TabIndex = 14;
             pbDate.TabStop = false;
             pbDate.Click += pictureBox1_Click_2;
+            // 
+            // lblPLKU
+            // 
+            lblPLKU.AutoSize = true;
+            lblPLKU.BackColor = Color.Transparent;
+            lblPLKU.Font = new Font("Constantia", 43F, FontStyle.Bold);
+            lblPLKU.ForeColor = Color.FromArgb(137, 35, 91);
+            lblPLKU.Location = new Point(495, 5);
+            lblPLKU.Name = "lblPLKU";
+            lblPLKU.Size = new Size(232, 88);
+            lblPLKU.TabIndex = 7;
+            lblPLKU.Text = "PLKU";
+            lblPLKU.Click += lblPLKU_Click;
+            // 
+            // lblUni
+            // 
+            lblUni.AutoSize = true;
+            lblUni.BackColor = Color.Transparent;
+            lblUni.Font = new Font("Constantia", 10F, FontStyle.Bold);
+            lblUni.ForeColor = Color.FromArgb(137, 35, 91);
+            lblUni.Location = new Point(509, 82);
+            lblUni.Name = "lblUni";
+            lblUni.Size = new Size(197, 42);
+            lblUni.TabIndex = 8;
+            lblUni.Text = "PRINCESS LEIGH KATE\r\nUNIVERSITY\r\n";
+            lblUni.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // pnlHeader
+            // 
+            pnlHeader.BackColor = Color.FromArgb(255, 243, 242);
+            pnlHeader.BorderStyle = BorderStyle.Fixed3D;
+            pnlHeader.Controls.Add(lblUni);
+            pnlHeader.Controls.Add(lblPLKU);
+            pnlHeader.Controls.Add(pbLogo);
+            pnlHeader.Controls.Add(pictureBox1);
+            pnlHeader.Controls.Add(lblHeader);
+            pnlHeader.Location = new Point(66, 29);
+            pnlHeader.Name = "pnlHeader";
+            pnlHeader.Size = new Size(1063, 133);
+            pnlHeader.TabIndex = 40;
+            // 
+            // pbLogo
+            // 
+            pbLogo.BackColor = Color.FromArgb(255, 243, 242);
+            pbLogo.Image = (Image)resources.GetObject("pbLogo.Image");
+            pbLogo.Location = new Point(348, -19);
+            pbLogo.Margin = new Padding(4, 3, 4, 3);
+            pbLogo.Name = "pbLogo";
+            pbLogo.Size = new Size(189, 161);
+            pbLogo.SizeMode = PictureBoxSizeMode.Zoom;
+            pbLogo.TabIndex = 37;
+            pbLogo.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.FromArgb(255, 202, 228);
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(1617, -8);
+            pictureBox1.Margin = new Padding(4, 3, 4, 3);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(189, 161);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 36;
+            pictureBox1.TabStop = false;
+            // 
+            // lblHeader
+            // 
+            lblHeader.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblHeader.AutoSize = true;
+            lblHeader.BackColor = Color.FromArgb(255, 202, 228);
+            lblHeader.Font = new Font("Constantia", 60F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblHeader.ForeColor = Color.FromArgb(137, 35, 91);
+            lblHeader.Location = new Point(1321, 2);
+            lblHeader.Name = "lblHeader";
+            lblHeader.Size = new Size(876, 122);
+            lblHeader.TabIndex = 34;
+            lblHeader.Text = "PLK UNIVERSITY";
             // 
             // PLKLoginScreenForm
             // 
@@ -616,10 +642,10 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1193, 896);
+            Controls.Add(pnlHeader);
             Controls.Add(lblFooter);
             Controls.Add(pnlLoginDashboard);
             Controls.Add(pnlLoginField);
-            Controls.Add(pnlHeader);
             Controls.Add(groupBox1);
             Font = new Font("Inter", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             FormBorderStyle = FormBorderStyle.Fixed3D;
@@ -628,9 +654,6 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "PLK University Admin Login";
             Load += PLKLoginScreenForm_Load;
-            pnlHeader.ResumeLayout(false);
-            pnlHeader.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pbLogo).EndInit();
             pnlLoginDashboard.ResumeLayout(false);
             pnlLoginDashboard.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pbCharter3).EndInit();
@@ -647,14 +670,15 @@
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pbTime).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbDate).EndInit();
+            pnlHeader.ResumeLayout(false);
+            pnlHeader.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pbLogo).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-        private Panel pnlHeader;
-        private Label lblPLKU;
-        private Label lblUni;
         private Panel pnlAdminUnder;
         private Panel pnlLoginDashboard;
         private Label lblMessage1;
@@ -670,7 +694,6 @@
         private PictureBox pbPasswordIcon;
         private Panel pnlUnder;
         private Button btnLogInn;
-        private Panel panel1;
         private Panel panel2;
         private Label lblAdminLogin;
         private Panel pnlLoginField;
@@ -695,6 +718,12 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private PictureBox pbDate;
         private PictureBox pbTime;
+        private Panel panel1;
+        private Label lblPLKU;
+        private Label lblUni;
+        private Panel pnlHeader;
+        private PictureBox pictureBox1;
+        private Label lblHeader;
         private PictureBox pbLogo;
     }
 }

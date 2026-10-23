@@ -34,50 +34,14 @@ namespace plk_u_sis_wfa
             LoadStudents();
         }
 
-        private void SetupComboBoxPlaceholders()
-        {
-            cmbFilterProgram.Items.Clear();
-            cmbFilterProgram.Items.Add("Select Program");
-            cmbFilterProgram.Items.Add("BS in Cosmetic Science");
-            cmbFilterProgram.Items.Add("BS in Floriculture and Botanical Design");
-            cmbFilterProgram.Items.Add("BS in Historical Fashion");
-            cmbFilterProgram.Items.Add("BS in Haute Couture and Luxury Fashion Design");
-
-            cmbFilterProgram.SelectedIndex = 0;
-        }
-
+        // open dashboard form
         private void PLKSISDashboard_Load(object? sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
             LoadStudents();
         }
 
-        private void TestDatabaseConnection()
-        {
-            try
-            {
-                using (var conn = DBConnection.GetConnection())
-                {
-                    conn.Open();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Database connection failed:\n" + ex.Message);
-            }
-        }
-
-        private string GetSelectedFilterYear()
-        {
-            if (rbFilter1stYear != null && rbFilter1stYear.Checked) return "1st Year";
-            if (rbFilter2ndYear != null && rbFilter2ndYear.Checked) return "2nd Year";
-            if (rbFilter3rdYear != null && rbFilter3rdYear.Checked) return "3rd Year";
-            if (rbFilter4thYear != null && rbFilter4thYear.Checked) return "4th Year";
-
-            return "ALL";
-        }
-
-
+        // gets data from the mysql to dgv
         private void LoadStudents(string programFilter = "", string yearFilter = "", string searchQuery = "")
         {
             try
@@ -192,6 +156,49 @@ namespace plk_u_sis_wfa
             }
         }
 
+
+        // selection for program filter field
+        private void SetupComboBoxPlaceholders()
+        {
+            cmbFilterProgram.Items.Clear();
+            cmbFilterProgram.Items.Add("Select Program");
+            cmbFilterProgram.Items.Add("BS in Cosmetic Science");
+            cmbFilterProgram.Items.Add("BS in Floriculture and Botanical Design");
+            cmbFilterProgram.Items.Add("BS in Historical Fashion");
+            cmbFilterProgram.Items.Add("BS in Haute Couture and Luxury Fashion Design");
+
+            cmbFilterProgram.SelectedIndex = 0;
+        }
+
+        // c# and mysql connection checker
+        private void TestDatabaseConnection()
+        {
+            try
+            {
+                using (var conn = DBConnection.GetConnection())
+                {
+                    conn.Open();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Database connection failed:\n" + ex.Message);
+            }
+        }
+        // year level selection for filter field
+        private string GetSelectedFilterYear()
+        {
+            if (rbFilter1stYear != null && rbFilter1stYear.Checked) return "1st Year";
+            if (rbFilter2ndYear != null && rbFilter2ndYear.Checked) return "2nd Year";
+            if (rbFilter3rdYear != null && rbFilter3rdYear.Checked) return "3rd Year";
+            if (rbFilter4thYear != null && rbFilter4thYear.Checked) return "4th Year";
+
+            return "ALL";
+        }
+
+
+
+        // filter button for program and year level filter field
         private void btnFilter_Click(object? sender, EventArgs e)
         {
             string selectedProgram = cmbFilterProgram.SelectedItem?.ToString() ?? cmbFilterProgram.Text;
@@ -201,6 +208,7 @@ namespace plk_u_sis_wfa
             LoadStudents(selectedProgram, selectedYear, searchText);
         }
 
+        // search clear button to clear search box
         private void btnSearchClear_Click(object? sender, EventArgs e)
         {
 
@@ -236,6 +244,7 @@ namespace plk_u_sis_wfa
             LoadStudents(selectedProgram, selectedYear, txtSearch.Text.Trim());
         }
 
+        // gender selection
         private string GetSelectedGender()
         {
             if (rbMale.Checked) return "Male";
@@ -243,6 +252,7 @@ namespace plk_u_sis_wfa
             return "";
         }
 
+        // data grid view for student records
         private void dgvStudentRecords_CellClick(object? sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0)
@@ -267,6 +277,7 @@ namespace plk_u_sis_wfa
             txtContact.Text = row.Cells["contact_number"].Value?.ToString() ?? "";
         }
 
+        // add student function
         private void btnAdd_Click(object? sender, EventArgs e)
         {
             string gender = GetSelectedGender();
@@ -320,6 +331,7 @@ namespace plk_u_sis_wfa
             }
         }
 
+        // update stduent function
         private void btnUpdate_Click(object? sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(selectedStudentId))
@@ -381,6 +393,7 @@ namespace plk_u_sis_wfa
             }
         }
 
+        // delete stduent function
         private void btnDelete_Click(object? sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(selectedStudentId))
@@ -428,6 +441,7 @@ namespace plk_u_sis_wfa
             }
         }
 
+        // clear function for student data field/form
         private void ClearFields()
         {
             selectedStudentId = "";
@@ -448,6 +462,7 @@ namespace plk_u_sis_wfa
             ClearFields();
         }
 
+        // clear filter button for year level and program filter
         private void btnClearFilter_Click(object? sender, EventArgs e)
         {
             if (cmbFilterProgram.Items.Count > 0)
@@ -471,17 +486,7 @@ namespace plk_u_sis_wfa
 
             LoadStudents(selectedProgram, selectedYear, txtSearch.Text.Trim());
         }
-        private void lblProgram_Click(object sender, EventArgs e) { }
-        private void cmbProgram_SelectedIndexChanged(object sender, EventArgs e) { }
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) { }
-        private void lblStudentId_Click(object sender, EventArgs e) { }
-        private void cmbGender_SelectedIndexChanged(object sender, EventArgs e) { }
-        private void txtFullName_TextChanged(object sender, EventArgs e) { }
-        private void lblYearLevel_Click(object sender, EventArgs e) { }
-        private void lblContact_Click(object sender, EventArgs e) { }
-        private void txtContact_TextChanged(object sender, EventArgs e) { }
-        private void label2_Click(object sender, EventArgs e) { }
-        private void panel14_Paint(object sender, PaintEventArgs e) { }
+
         private void txtStudentId_TextChanged(object sender, EventArgs e) { }
         private void rbMale_CheckedChanged(object sender, EventArgs e) { }
         private void btnSort_Click_1(object sender, EventArgs e) { }
@@ -536,5 +541,32 @@ namespace plk_u_sis_wfa
         {
 
         }
+
+        private void btnSearchClear_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        // exit button
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+
+            DialogResult result = MessageBox.Show(
+                "Are you sure you want to exit?",
+                "Confirm Exit",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.Yes)
+            {
+
+                PLKLoginScreenForm loginForm = new PLKLoginScreenForm();
+                loginForm.Show();
+
+                this.Close();
+            }
+        }
+
     }
 }
