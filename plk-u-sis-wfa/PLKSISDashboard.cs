@@ -568,5 +568,9 @@ namespace plk_u_sis_wfa
             }
         }
 
+        private void btnFilter_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

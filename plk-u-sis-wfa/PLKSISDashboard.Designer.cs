@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PLKSISDashboard));
             dgvStudentRecords = new DataGridView();
             txtStudentId = new TextBox();
@@ -114,37 +114,37 @@
             dgvStudentRecords.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             dgvStudentRecords.BackgroundColor = Color.FromArgb(255, 202, 228);
             dgvStudentRecords.BorderStyle = BorderStyle.Fixed3D;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(255, 202, 228);
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(255, 243, 242);
-            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgvStudentRecords.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle7.BackColor = Color.FromArgb(255, 202, 228);
+            dataGridViewCellStyle7.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle7.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = Color.FromArgb(255, 243, 242);
+            dataGridViewCellStyle7.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
+            dgvStudentRecords.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             dgvStudentRecords.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(255, 243, 242);
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(137, 35, 91);
-            dataGridViewCellStyle2.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dgvStudentRecords.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = Color.FromArgb(255, 243, 242);
+            dataGridViewCellStyle8.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle8.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = Color.FromArgb(137, 35, 91);
+            dataGridViewCellStyle8.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
+            dgvStudentRecords.DefaultCellStyle = dataGridViewCellStyle8;
             dgvStudentRecords.EnableHeadersVisualStyles = false;
             dgvStudentRecords.GridColor = Color.FromArgb(137, 35, 91);
             dgvStudentRecords.Location = new Point(728, 295);
             dgvStudentRecords.Name = "dgvStudentRecords";
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(255, 243, 242);
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(137, 35, 91);
-            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dgvStudentRecords.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle9.BackColor = Color.FromArgb(255, 243, 242);
+            dataGridViewCellStyle9.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle9.ForeColor = Color.Black;
+            dataGridViewCellStyle9.SelectionBackColor = Color.FromArgb(137, 35, 91);
+            dataGridViewCellStyle9.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
+            dgvStudentRecords.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             dgvStudentRecords.RowHeadersWidth = 51;
-            dgvStudentRecords.Size = new Size(869, 676);
+            dgvStudentRecords.Size = new Size(1144, 676);
             dgvStudentRecords.TabIndex = 0;
             // 
             // txtStudentId
@@ -230,7 +230,7 @@
             txtSearch.Location = new Point(885, 243);
             txtSearch.Name = "txtSearch";
             txtSearch.PlaceholderText = " Search by ID or Name";
-            txtSearch.Size = new Size(489, 27);
+            txtSearch.Size = new Size(758, 27);
             txtSearch.TabIndex = 8;
             txtSearch.TextChanged += txtSearch_TextChanged;
             // 
@@ -355,7 +355,7 @@
             btnSearchClear.BackColor = Color.FromArgb(255, 202, 228);
             btnSearchClear.FlatStyle = FlatStyle.Popup;
             btnSearchClear.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
-            btnSearchClear.Location = new Point(661, 21);
+            btnSearchClear.Location = new Point(936, 21);
             btnSearchClear.Name = "btnSearchClear";
             btnSearchClear.Size = new Size(94, 29);
             btnSearchClear.TabIndex = 18;
@@ -374,6 +374,7 @@
             btnFilter.TabIndex = 19;
             btnFilter.Text = "Filter";
             btnFilter.UseVisualStyleBackColor = false;
+            btnFilter.Click += btnFilter_Click_1;
             // 
             // btnSort
             // 
@@ -381,7 +382,7 @@
             btnSort.BackColor = Color.FromArgb(255, 202, 228);
             btnSort.FlatStyle = FlatStyle.Popup;
             btnSort.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
-            btnSort.Location = new Point(761, 21);
+            btnSort.Location = new Point(1036, 21);
             btnSort.Name = "btnSort";
             btnSort.Size = new Size(94, 29);
             btnSort.TabIndex = 20;
@@ -607,7 +608,7 @@
             pnlFilter.Controls.Add(rbFilter3rdYear);
             pnlFilter.Controls.Add(cmbFilterProgram);
             pnlFilter.Controls.Add(rbFilter4thYear);
-            pnlFilter.Location = new Point(1637, 220);
+            pnlFilter.Location = new Point(58, 740);
             pnlFilter.Name = "pnlFilter";
             pnlFilter.Size = new Size(227, 264);
             pnlFilter.TabIndex = 22;
@@ -652,7 +653,7 @@
             lblSearch.AutoSize = true;
             lblSearch.BackColor = Color.White;
             lblSearch.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblSearch.Location = new Point(5, 23);
+            lblSearch.Location = new Point(6, 23);
             lblSearch.Name = "lblSearch";
             lblSearch.Size = new Size(137, 23);
             lblSearch.TabIndex = 33;
@@ -666,7 +667,7 @@
             pnltxtSearch.Controls.Add(pnlSearchUnderline);
             pnltxtSearch.Location = new Point(875, 235);
             pnltxtSearch.Name = "pnltxtSearch";
-            pnltxtSearch.Size = new Size(506, 43);
+            pnltxtSearch.Size = new Size(775, 43);
             pnltxtSearch.TabIndex = 24;
             pnltxtSearch.Paint += panel13_Paint;
             // 
@@ -674,9 +675,9 @@
             // 
             pnlSearchUnderline.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             pnlSearchUnderline.BackColor = Color.FromArgb(137, 35, 91);
-            pnlSearchUnderline.Location = new Point(11, 34);
+            pnlSearchUnderline.Location = new Point(10, 28);
             pnlSearchUnderline.Name = "pnlSearchUnderline";
-            pnlSearchUnderline.Size = new Size(488, 3);
+            pnlSearchUnderline.Size = new Size(758, 10);
             pnlSearchUnderline.TabIndex = 19;
             // 
             // pnlSearch
@@ -689,7 +690,7 @@
             pnlSearch.Controls.Add(btnSort);
             pnlSearch.Location = new Point(728, 220);
             pnlSearch.Name = "pnlSearch";
-            pnlSearch.Size = new Size(869, 69);
+            pnlSearch.Size = new Size(1144, 69);
             pnlSearch.TabIndex = 34;
             // 
             // pbAdd
@@ -803,7 +804,7 @@
             btnExit.BackColor = Color.FromArgb(255, 202, 228);
             btnExit.FlatStyle = FlatStyle.Popup;
             btnExit.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
-            btnExit.Location = new Point(1637, 495);
+            btnExit.Location = new Point(291, 955);
             btnExit.Name = "btnExit";
             btnExit.Size = new Size(228, 49);
             btnExit.TabIndex = 41;
