@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
@@ -29,10 +30,39 @@ namespace plk_u_sis_wfa
             btnFilter.Click += btnFilter_Click;
             btnClearFilter.Click += btnClearFilter_Click;
             dgvStudentRecords.CellClick += dgvStudentRecords_CellClick;
+            txtStudentId.KeyPress += txtStudentId_KeyPress;
+            txtContact.KeyPress += txtContact_KeyPress;
 
             TestDatabaseConnection();
             SetupComboBoxPlaceholders();
             LoadStudents();
+        }
+
+        private void txtStudentId_KeyPress(object? sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '-')
+            {
+                e.Handled = true;
+                MessageBox.Show(
+                    "Invalid input!",
+                    "Invalid Student ID",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+            }
+        }
+        private void txtContact_KeyPress(object? sender, KeyPressEventArgs e)
+        {
+            if (char.IsLetter(e.KeyChar))
+            {
+                e.Handled = true;
+                MessageBox.Show(
+                    "Invalid input! Letters are not allowed in Contact Number.",
+                    "Invalid Contact Number",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+            }
         }
 
         // open dashboard form
@@ -106,6 +136,10 @@ namespace plk_u_sis_wfa
                         DataTable dt = new DataTable();
                         adapter.Fill(dt);
                         dgvStudentRecords.DataSource = dt;
+                        if (dgvStudentRecords.Columns.Contains("created_at"))
+                        {
+                            dgvStudentRecords.Columns["created_at"].Visible = false;
+                        }
 
                         dgvStudentRecords.RowHeadersVisible = false;
                         dgvStudentRecords.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -343,6 +377,21 @@ namespace plk_u_sis_wfa
                 return;
             }
 
+            // Extra check sakaling nag-paste ng invalid characters
+            if (!txtStudentId.Text.Trim().All(c => char.IsDigit(c) || c == '-'))
+            {
+                MessageBox.Show("Invalid Student ID! Only numbers (0-9) and hyphen (-) are allowed.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtStudentId.Focus();
+                return;
+            }
+
+            if (txtContact.Text.Trim().Any(char.IsLetter))
+            {
+                MessageBox.Show("Invalid Contact Number! Letters are not allowed.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtContact.Focus();
+                return;
+            }
+
             try
             {
                 using (var conn = DBConnection.GetConnection())
@@ -406,6 +455,13 @@ namespace plk_u_sis_wfa
                 cmbStatus.SelectedIndex == -1)
             {
                 MessageBox.Show("Please fill in all required student fields.");
+                return;
+            }
+
+            if (txtContact.Text.Trim().Any(char.IsLetter))
+            {
+                MessageBox.Show("Invalid Contact Number! Letters are not allowed.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtContact.Focus();
                 return;
             }
 

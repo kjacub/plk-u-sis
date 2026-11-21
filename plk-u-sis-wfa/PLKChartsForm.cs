@@ -28,7 +28,6 @@ namespace plk_u_sis_wfa
             btnExportSurvival.Click += btnExportSurvival_Click;
             btnExportTransfer.Click += btnExportTransfer_Click;
             btnExportEnrollment.Click += btnExportEnrollment_Click;
-
         }
 
         private void PLKChartsForm_Load(object? sender, EventArgs e)
@@ -51,7 +50,7 @@ namespace plk_u_sis_wfa
 
             formsPlot.Plot.Title(title);
             formsPlot.Plot.Axes.Title.Label.ForeColor = TextDarkPlum;
-            formsPlot.Plot.Axes.Title.Label.FontSize = 13;
+            formsPlot.Plot.Axes.Title.Label.FontSize = 16;
 
             formsPlot.Plot.YLabel(yLabel);
             formsPlot.Plot.Axes.Left.Label.ForeColor = TextDarkPlum;
@@ -65,13 +64,15 @@ namespace plk_u_sis_wfa
             formsPlot.Plot.Axes.Bottom.TickLabelStyle.ForeColor = TextDarkPlum;
         }
 
-        // 1. SURVIVAL RATE PER COURSE (Graduated % by Program)
+        // 1. SURVIVAL RATE PER COURSE (Graduated % + Exact Student Count by Program)
         private void LoadSurvivalRatePerCourseChart()
         {
             try
             {
                 var programs = new List<string>();
                 var rates = new List<double>();
+                var gradCounts = new List<int>();
+                var totalCounts = new List<int>();
 
                 using (var conn = DBConnection.GetConnection())
                 {
@@ -79,7 +80,9 @@ namespace plk_u_sis_wfa
                     string query = @"
                         SELECT 
                             REPLACE(program, 'BS in ', '') AS course,
-                            ROUND((SUM(CASE WHEN academic_status = 'Graduated' THEN 1 ELSE 0 END) / COUNT(*)) * 100, 2) AS survival_rate
+                            SUM(CASE WHEN academic_status = 'Graduated' THEN 1 ELSE 0 END) AS grad_count,
+                            COUNT(*) AS total_count,
+                            ROUND((SUM(CASE WHEN academic_status = 'Graduated' THEN 1 ELSE 0 END) / COUNT(*)) * 100, 1) AS survival_rate
                         FROM students
                         WHERE is_deleted = 0
                         GROUP BY program
@@ -91,12 +94,17 @@ namespace plk_u_sis_wfa
                         while (reader.Read())
                         {
                             string prog = reader["course"].ToString() ?? "Unknown";
-                            // Paikliin ang mahahabang labels para hindi magpatong sa X-axis
+
                             prog = prog.Replace(" and Botanical Design", "")
                                        .Replace(" and Luxury Fashion Design", "");
 
                             programs.Add(prog);
+                            int grad = reader["grad_count"] == DBNull.Value ? 0 : Convert.ToInt32(reader["grad_count"]);
+                            int total = reader["total_count"] == DBNull.Value ? 0 : Convert.ToInt32(reader["total_count"]);
                             double rate = reader["survival_rate"] == DBNull.Value ? 0 : Convert.ToDouble(reader["survival_rate"]);
+
+                            gradCounts.Add(grad);
+                            totalCounts.Add(total);
                             rates.Add(rate);
                         }
                     }
@@ -112,7 +120,15 @@ namespace plk_u_sis_wfa
                     {
                         bars.Bars[i].FillColor = (i % 2 == 0) ? DeepPlum : LightPink;
                         bars.Bars[i].LineColor = DeepPlum;
+
+                        // Ipakita sa ibabaw ng bawat bar ang percentage + exact count (hal. 29.2% (19/65))
+                        bars.Bars[i].Label = $"{rates[i]:F1}% ({gradCounts[i]}/{totalCounts[i]})";
                     }
+
+                    // Styling ng value labels sa ibabaw ng bars
+                    bars.ValueLabelStyle.ForeColor = TextDarkPlum;
+                    bars.ValueLabelStyle.FontSize = 11;
+                    bars.ValueLabelStyle.Bold = true;
 
                     Tick[] ticks = new Tick[programs.Count];
                     for (int i = 0; i < programs.Count; i++)
@@ -135,74 +151,110 @@ namespace plk_u_sis_wfa
             }
         }
 
-        // 2. TRANSFER RATE (Transferred_In vs. Transferred_Out %)
+        // 2. STUDENT STATUS DISTRIBUTION (Pie Chart)
         private void LoadTransferRateChart()
         {
+            formsPlotTransfer.Plot.Clear();
+
+            var statusCounts = new Dictionary<string, int>();
+            int totalStudents = 0;
+
+            string query = @"
+                SELECT academic_status, COUNT(*) AS total
+                FROM students
+                WHERE is_deleted = 0
+                GROUP BY academic_status
+                ORDER BY total DESC;";
+
             try
             {
-                var categories = new List<string>();
-                var rates = new List<double>();
-
                 using (var conn = DBConnection.GetConnection())
                 {
                     conn.Open();
-                    string query = @"
-                        SELECT 
-                            'Transferred In' AS transfer_type,
-                            ROUND((SUM(CASE WHEN academic_status = 'Transferred_In' THEN 1 ELSE 0 END) / COUNT(*)) * 100, 2) AS rate
-                        FROM students
-                        WHERE is_deleted = 0
-
-                        UNION ALL
-
-                        SELECT 
-                            'Transferred Out' AS transfer_type,
-                            ROUND((SUM(CASE WHEN academic_status = 'Transferred_Out' THEN 1 ELSE 0 END) / COUNT(*)) * 100, 2) AS rate
-                        FROM students
-                        WHERE is_deleted = 0";
-
                     using (var cmd = new MySqlCommand(query, conn))
                     using (var reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            categories.Add(reader["transfer_type"].ToString() ?? "");
-                            double rate = reader["rate"] == DBNull.Value ? 0 : Convert.ToDouble(reader["rate"]);
-                            rates.Add(rate);
+                            string status = reader["academic_status"].ToString() ?? "Unknown";
+                            int count = Convert.ToInt32(reader["total"]);
+                            statusCounts[status] = count;
+                            totalStudents += count;
                         }
                     }
                 }
-
-                formsPlotTransfer.Plot.Clear();
-
-                if (rates.Count > 0)
-                {
-                    var bars = formsPlotTransfer.Plot.Add.Bars(rates.ToArray());
-                    if (bars.Bars.Count >= 2)
-                    {
-                        bars.Bars[0].FillColor = DeepPlum;  // Transferred In
-                        bars.Bars[0].LineColor = DeepPlum;
-
-                        bars.Bars[1].FillColor = LightPink; // Transferred Out
-                        bars.Bars[1].LineColor = DeepPlum;
-                    }
-
-                    Tick[] ticks = new Tick[categories.Count];
-                    for (int i = 0; i < categories.Count; i++)
-                    {
-                        ticks[i] = new Tick(i, categories[i]);
-                    }
-                    formsPlotTransfer.Plot.Axes.Bottom.TickGenerator = new ScottPlot.TickGenerators.NumericManual(ticks);
-                    formsPlotTransfer.Plot.Axes.SetLimitsY(0, 105);
-                }
-
-                ApplyChartTextStyling(formsPlotTransfer, "Student Transfer Rate (In vs. Out %)", "Transfer Rate (%)");
-                formsPlotTransfer.Refresh();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error loading Transfer Rate chart:\n" + ex.Message, "Chart Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error loading Student Status Distribution:\n" + ex.Message,
+                    "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
+
+            if (totalStudents == 0)
+            {
+                formsPlotTransfer.Plot.Title("Student Status Distribution (No Data)");
+                formsPlotTransfer.Refresh();
+                return;
+            }
+
+            var sliceColors = new Dictionary<string, ScottPlot.Color>
+            {
+                { "Active",          ScottPlot.Color.FromHex("#89235B") },
+                { "Graduated",       ScottPlot.Color.FromHex("#C2185B") },
+                { "Transferred_In",  ScottPlot.Color.FromHex("#F10291") },
+                { "Transferred_Out", ScottPlot.Color.FromHex("#F48FB1") },
+                { "Dropped",         ScottPlot.Color.FromHex("#4A0E2E") }
+            };
+
+            var slices = new List<PieSlice>();
+
+            foreach (var kvp in statusCounts)
+            {
+                double percentage = (double)kvp.Value / totalStudents * 100.0;
+                string cleanName = kvp.Key.Replace("_", " ");
+
+                var color = sliceColors.ContainsKey(kvp.Key)
+                    ? sliceColors[kvp.Key]
+                    : ScottPlot.Color.FromHex("#AD1457");
+
+                var slice = new PieSlice
+                {
+                    Value = kvp.Value,
+                    FillColor = color,
+                    Label = $"{percentage:F1}%",
+                    LegendText = $"{cleanName} ({kvp.Value} - {percentage:F1}%)"
+                };
+
+                slice.LabelFontColor = ScottPlot.Color.FromHex("#4A0E2E");
+                slice.LabelFontSize = 14;
+                slice.LabelBold = true;
+
+                slices.Add(slice);
+            }
+
+            var pie = formsPlotTransfer.Plot.Add.Pie(slices);
+            pie.ExplodeFraction = 0.04;
+            pie.SliceLabelDistance = 1.25;
+
+            formsPlotTransfer.Plot.Axes.Frameless();
+            formsPlotTransfer.Plot.HideGrid();
+
+            formsPlotTransfer.Plot.Title("Student Status Distribution (Transfer Rate)");
+            formsPlotTransfer.Plot.Axes.Title.Label.ForeColor = ScottPlot.Color.FromHex("#4A0E2E");
+            formsPlotTransfer.Plot.Axes.Title.Label.FontSize = 16;
+
+            formsPlotTransfer.Plot.ShowLegend();
+            formsPlotTransfer.Plot.Legend.Alignment = Alignment.LowerCenter;
+            formsPlotTransfer.Plot.Legend.FontSize = 13;
+            formsPlotTransfer.Plot.Legend.FontColor = ScottPlot.Color.FromHex("#4A0E2E");
+
+            formsPlotTransfer.Plot.FigureBackground.Color = ScottPlot.Color.FromHex("#FFF3F2");
+            formsPlotTransfer.Plot.DataBackground.Color = ScottPlot.Color.FromHex("#FFF3F2");
+            formsPlotTransfer.Plot.Benchmark.IsVisible = false;
+
+            formsPlotTransfer.Plot.Axes.AutoScale();
+            formsPlotTransfer.Refresh();
         }
 
         // 3. ENROLLMENT COUNT PER YEAR (PER PROGRAM) - Multi-Line Chart
@@ -247,7 +299,7 @@ namespace plk_u_sis_wfa
 
                     double[] xPositions = Enumerable.Range(0, distinctYears.Count).Select(i => (double)i).ToArray();
 
-                    // Plum/Rose palette para sa 4 lines
+                    // color palette for lines
                     ScottPlot.Color[] lineColors = new ScottPlot.Color[]
                     {
                         DeepPlum,
@@ -282,7 +334,6 @@ namespace plk_u_sis_wfa
                     }
                     formsPlotEnrollment.Plot.Axes.Bottom.TickGenerator = new ScottPlot.TickGenerators.NumericManual(ticks);
 
-                    // Ilagay sa UpperRight para hindi matakpan ang points sa 2023
                     formsPlotEnrollment.Plot.ShowLegend(Alignment.UpperRight);
                     formsPlotEnrollment.Plot.Legend.FontColor = TextDarkPlum;
                     formsPlotEnrollment.Plot.Legend.BackgroundColor = ScottPlot.Color.FromHex("#FCE4EC");
@@ -302,7 +353,7 @@ namespace plk_u_sis_wfa
         private void btnRefresh_Click(object? sender, EventArgs e)
         {
             RefreshAllCharts();
-            MessageBox.Show("Dashboard charts refreshed with the latest database records!", "Refreshed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Charts refreshed with the latest database records!", "Refreshed", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnBack_Click(object? sender, EventArgs e)
@@ -310,34 +361,13 @@ namespace plk_u_sis_wfa
             this.Close();
         }
 
-        // Reusable helper para i-export ang isang chart bilang PNG image
-        private void ExportSingleChart(ScottPlot.WinForms.FormsPlot formsPlot, string defaultFileName, int width = 1000, int height = 600)
-        {
-            using (SaveFileDialog sfd = new SaveFileDialog())
-            {
-                sfd.Filter = "PNG Image (*.png)|*.png";
-                sfd.FileName = $"{defaultFileName}_{DateTime.Now:yyyyMMdd_HHmmss}.png";
-
-                if (sfd.ShowDialog() == DialogResult.OK)
-                {
-                    try
-                    {
-                        formsPlot.Plot.SavePng(sfd.FileName, width, height);
-                        MessageBox.Show("Chart exported successfully!", "Export Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error exporting chart:\n" + ex.Message, "Export Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
-        }
-        // Reusable helper para mag-export ng single chart + status summary counts + student directory bilang PDF
+        // single chart + status summary counts + student directory (grouped by status or enrollment year) as pdf
         private void ExportSingleChartToPdf(
             ScottPlot.WinForms.FormsPlot formsPlot,
             string reportTitle,
             string defaultFileName,
-            string whereFilter = "is_deleted = 0")
+            string whereFilter = "is_deleted = 0",
+            string groupBy = "none")
         {
             using (SaveFileDialog sfd = new SaveFileDialog())
             {
@@ -365,15 +395,15 @@ namespace plk_u_sis_wfa
 
                         // Query A: Overall Status Counts
                         string countQuery = @"
-                    SELECT 
-                        COUNT(*) AS total,
-                        SUM(CASE WHEN academic_status = 'Active' THEN 1 ELSE 0 END) AS active_cnt,
-                        SUM(CASE WHEN academic_status = 'Graduated' THEN 1 ELSE 0 END) AS grad_cnt,
-                        SUM(CASE WHEN academic_status = 'Transferred_In' THEN 1 ELSE 0 END) AS ti_cnt,
-                        SUM(CASE WHEN academic_status = 'Transferred_Out' THEN 1 ELSE 0 END) AS to_cnt,
-                        SUM(CASE WHEN academic_status = 'Dropped' THEN 1 ELSE 0 END) AS drop_cnt
-                    FROM students
-                    WHERE is_deleted = 0";
+                            SELECT 
+                                COUNT(*) AS total,
+                                SUM(CASE WHEN academic_status = 'Active' THEN 1 ELSE 0 END) AS active_cnt,
+                                SUM(CASE WHEN academic_status = 'Graduated' THEN 1 ELSE 0 END) AS grad_cnt,
+                                SUM(CASE WHEN academic_status = 'Transferred_In' THEN 1 ELSE 0 END) AS ti_cnt,
+                                SUM(CASE WHEN academic_status = 'Transferred_Out' THEN 1 ELSE 0 END) AS to_cnt,
+                                SUM(CASE WHEN academic_status = 'Dropped' THEN 1 ELSE 0 END) AS drop_cnt
+                            FROM students
+                            WHERE is_deleted = 0";
 
                         using (var countCmd = new MySqlCommand(countQuery, conn))
                         using (var countReader = countCmd.ExecuteReader())
@@ -391,15 +421,15 @@ namespace plk_u_sis_wfa
 
                         // Query B: Student Directory Table
                         string query = $@"
-                    SELECT student_id, 
-                           CONCAT_WS(' ', first_name, middle_name, last_name) AS full_name, 
-                           program, 
-                           year_level,
-                           enrollment_year,
-                           academic_status 
-                    FROM students 
-                    WHERE {whereFilter} 
-                    ORDER BY student_id ASC";
+                            SELECT student_id, 
+                                   CONCAT_WS(' ', first_name, middle_name, last_name) AS full_name, 
+                                   program, 
+                                   year_level,
+                                   enrollment_year,
+                                   academic_status 
+                            FROM students 
+                            WHERE {whereFilter} 
+                            ORDER BY student_id ASC";
 
                         using (var cmd = new MySqlCommand(query, conn))
                         using (var reader = cmd.ExecuteReader())
@@ -485,39 +515,132 @@ namespace plk_u_sis_wfa
                                 col.Item().PaddingTop(4).Text($"Student Records Breakdown ({studentList.Count} Listed)")
                                     .FontSize(11).Bold().FontColor("#4A0E2E");
 
-                                // Directory Table
-                                col.Item().Table(table =>
+                                if (groupBy == "status")
                                 {
-                                    table.ColumnsDefinition(columns =>
-                                    {
-                                        columns.RelativeColumn(1.2f); // Student ID
-                                        columns.RelativeColumn(2.1f); // Full Name
-                                        columns.RelativeColumn(2.4f); // Program
-                                        columns.RelativeColumn(1.1f); // Year Level
-                                        columns.RelativeColumn(0.9f); // Batch
-                                        columns.RelativeColumn(1.2f); // Status
-                                    });
+                                    // NAKA-GROUP BY STATUS
+                                    var groupedStudents = studentList
+                                        .GroupBy(s => s.Status)
+                                        .OrderBy(g => g.Key);
 
-                                    table.Header(header =>
+                                    foreach (var group in groupedStudents)
                                     {
-                                        header.Cell().PaddingBottom(4).Text("Student ID").Bold();
-                                        header.Cell().PaddingBottom(4).Text("Full Name").Bold();
-                                        header.Cell().PaddingBottom(4).Text("Program").Bold();
-                                        header.Cell().PaddingBottom(4).Text("Year Level").Bold();
-                                        header.Cell().PaddingBottom(4).Text("Batch").Bold();
-                                        header.Cell().PaddingBottom(4).Text("Status").Bold();
-                                    });
+                                        string cleanStatusName = group.Key.Replace("_", " ");
 
-                                    foreach (var s in studentList)
-                                    {
-                                        table.Cell().PaddingVertical(2).Text(s.Id);
-                                        table.Cell().PaddingVertical(2).Text(s.FullName);
-                                        table.Cell().PaddingVertical(2).Text(s.Program);
-                                        table.Cell().PaddingVertical(2).Text(s.YearLevel);
-                                        table.Cell().PaddingVertical(2).Text(s.EnrollmentYear);
-                                        table.Cell().PaddingVertical(2).Text(s.Status);
+                                        col.Item().PaddingTop(6).Background("#FCE4EC").PaddingVertical(4).PaddingHorizontal(6)
+                                            .Text($"{cleanStatusName} ({group.Count()})")
+                                            .FontSize(10).Bold().FontColor("#89235B");
+
+                                        col.Item().Table(table =>
+                                        {
+                                            table.ColumnsDefinition(columns =>
+                                            {
+                                                columns.RelativeColumn(1.2f); // Student ID
+                                                columns.RelativeColumn(2.3f); // Full Name
+                                                columns.RelativeColumn(2.5f); // Program
+                                                columns.RelativeColumn(1.1f); // Year Level
+                                                columns.RelativeColumn(0.9f); // Batch
+                                            });
+
+                                            table.Header(header =>
+                                            {
+                                                header.Cell().PaddingBottom(3).Text("Student ID").Bold();
+                                                header.Cell().PaddingBottom(3).Text("Full Name").Bold();
+                                                header.Cell().PaddingBottom(3).Text("Program").Bold();
+                                                header.Cell().PaddingBottom(3).Text("Year Level").Bold();
+                                                header.Cell().PaddingBottom(3).Text("Batch").Bold();
+                                            });
+
+                                            foreach (var s in group.OrderBy(x => x.Id))
+                                            {
+                                                table.Cell().PaddingVertical(2).Text(s.Id);
+                                                table.Cell().PaddingVertical(2).Text(s.FullName);
+                                                table.Cell().PaddingVertical(2).Text(s.Program);
+                                                table.Cell().PaddingVertical(2).Text(s.YearLevel);
+                                                table.Cell().PaddingVertical(2).Text(s.EnrollmentYear);
+                                            }
+                                        });
                                     }
-                                });
+                                }
+                                else if (groupBy == "year")
+                                {
+                                    // NAKA-GROUP BY ENROLLMENT YEAR
+                                    var groupedByYear = studentList
+                                        .GroupBy(s => s.EnrollmentYear)
+                                        .OrderBy(g => g.Key);
+
+                                    foreach (var group in groupedByYear)
+                                    {
+                                        col.Item().PaddingTop(6).Background("#FCE4EC").PaddingVertical(4).PaddingHorizontal(6)
+                                            .Text($"Enrollment Year: {group.Key} ({group.Count()} Students)")
+                                            .FontSize(10).Bold().FontColor("#89235B");
+
+                                        col.Item().Table(table =>
+                                        {
+                                            table.ColumnsDefinition(columns =>
+                                            {
+                                                columns.RelativeColumn(1.2f); // Student ID
+                                                columns.RelativeColumn(2.2f); // Full Name
+                                                columns.RelativeColumn(2.5f); // Program
+                                                columns.RelativeColumn(1.1f); // Year Level
+                                                columns.RelativeColumn(1.2f); // Status
+                                            });
+
+                                            table.Header(header =>
+                                            {
+                                                header.Cell().PaddingBottom(3).Text("Student ID").Bold();
+                                                header.Cell().PaddingBottom(3).Text("Full Name").Bold();
+                                                header.Cell().PaddingBottom(3).Text("Program").Bold();
+                                                header.Cell().PaddingBottom(3).Text("Year Level").Bold();
+                                                header.Cell().PaddingBottom(3).Text("Status").Bold();
+                                            });
+
+                                            foreach (var s in group.OrderBy(x => x.Id))
+                                            {
+                                                table.Cell().PaddingVertical(2).Text(s.Id);
+                                                table.Cell().PaddingVertical(2).Text(s.FullName);
+                                                table.Cell().PaddingVertical(2).Text(s.Program);
+                                                table.Cell().PaddingVertical(2).Text(s.YearLevel);
+                                                table.Cell().PaddingVertical(2).Text(s.Status.Replace("_", " "));
+                                            }
+                                        });
+                                    }
+                                }
+                                else
+                                {
+                                    // STANDARD SINGLE DIRECTORY TABLE
+                                    col.Item().Table(table =>
+                                    {
+                                        table.ColumnsDefinition(columns =>
+                                        {
+                                            columns.RelativeColumn(1.2f); // Student ID
+                                            columns.RelativeColumn(2.1f); // Full Name
+                                            columns.RelativeColumn(2.4f); // Program
+                                            columns.RelativeColumn(1.1f); // Year Level
+                                            columns.RelativeColumn(0.9f); // Batch
+                                            columns.RelativeColumn(1.2f); // Status
+                                        });
+
+                                        table.Header(header =>
+                                        {
+                                            header.Cell().PaddingBottom(4).Text("Student ID").Bold();
+                                            header.Cell().PaddingBottom(4).Text("Full Name").Bold();
+                                            header.Cell().PaddingBottom(4).Text("Program").Bold();
+                                            header.Cell().PaddingBottom(4).Text("Year Level").Bold();
+                                            header.Cell().PaddingBottom(4).Text("Batch").Bold();
+                                            header.Cell().PaddingBottom(4).Text("Status").Bold();
+                                        });
+
+                                        foreach (var s in studentList.OrderBy(x => x.Id))
+                                        {
+                                            table.Cell().PaddingVertical(2).Text(s.Id);
+                                            table.Cell().PaddingVertical(2).Text(s.FullName);
+                                            table.Cell().PaddingVertical(2).Text(s.Program);
+                                            table.Cell().PaddingVertical(2).Text(s.YearLevel);
+                                            table.Cell().PaddingVertical(2).Text(s.EnrollmentYear);
+                                            table.Cell().PaddingVertical(2).Text(s.Status);
+                                        }
+                                    });
+                                }
                             });
 
                             // FOOTER (Page X / Y)
@@ -541,36 +664,39 @@ namespace plk_u_sis_wfa
             }
         }
 
-        // 1. Export Survival Rate Report (PDF)
+        // 1. Export Survival Rate Report (PDF - Naka-group by Status)
         private void btnExportSurvival_Click(object? sender, EventArgs e)
         {
             ExportSingleChartToPdf(
                 formsPlotSurvival,
                 "Survival Rate per Course Report",
                 "SurvivalRate_Report",
-                "is_deleted = 0"
+                "is_deleted = 0",
+                groupBy: "status"
             );
         }
 
-        // 2. Export Transfer Rate Report (PDF - naka-filter sa Transferred_In at Transferred_Out students)
+        // 2. Export Transfer Rate Report (PDF - Naka-group sa Transferred_In at Transferred_Out students)
         private void btnExportTransfer_Click(object? sender, EventArgs e)
         {
             ExportSingleChartToPdf(
                 formsPlotTransfer,
-                "Student Transfer Rate Report (In vs. Out)",
+                "Student Status Distribution Report (Transfers Breakdown)",
                 "TransferRate_Report",
-                "is_deleted = 0 AND academic_status IN ('Transferred_In', 'Transferred_Out')"
+                "is_deleted = 0 AND academic_status IN ('Transferred_In', 'Transferred_Out')",
+                groupBy: "status"
             );
         }
 
-        // 3. Export Enrollment Trend Report (PDF)
+        // 3. Export Enrollment Trend Report (PDF - Naka-group per Enrollment Year)
         private void btnExportEnrollment_Click(object? sender, EventArgs e)
         {
             ExportSingleChartToPdf(
                 formsPlotEnrollment,
                 "Enrollment Count per Year (by Program) Report",
                 "EnrollmentTrend_Report",
-                "is_deleted = 0"
+                "is_deleted = 0",
+                groupBy: "year"
             );
         }
     }
