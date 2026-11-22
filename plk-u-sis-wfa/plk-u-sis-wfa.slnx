@@ -1,3 +1,6 @@
 <Solution>
+  <Project Path="../PLKUSISAPP/PLKUSISAPP.vdproj" Type="Installer">
+    <Build Solution="Release|*" />
+  </Project>
   <Project Path="plk-u-sis-wfa.csproj" />
 </Solution>

@@ -1,6 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+	  <Company>PLK University</Company>
+  <Product>PLK Student Information System</Product>
+  <Authors>Team PLK</Authors>
+  <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  <FileVersion>1.0.0.0</FileVersion>
+	  
     <OutputType>WinExe</OutputType>
     <TargetFramework>net10.0-windows</TargetFramework>
     <RootNamespace>plk_u_sis_wfa</RootNamespace>
@@ -10,7 +16,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MySql.Data" Version="26.7.0" />
+    <PackageReference Include="MySql.Data" Version="26.10.0" />
     <PackageReference Include="QuestPDF" Version="2026.9.2" />
     <PackageReference Include="ScottPlot.WinForms" Version="5.1.59" />
   </ItemGroup>
