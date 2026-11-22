@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PLKUMobileApp.LoginPage"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="#B85D85">
+
+    <ScrollView Padding="16">
+        <VerticalStackLayout Spacing="12">
+
+            <!-- GLOBAL DARK MODE TOGGLE -->
+            <Button x:Name="btnDarkMode"
+                    Text="🌙 Dark"
+                    Clicked="OnToggleDarkModeClicked"
+                    HorizontalOptions="End"
+                    BackgroundColor="#69143E"
+                    TextColor="#FCEEF2"
+                    BorderColor="#FCEEF2"
+                    BorderWidth="1"
+                    FontSize="12"
+                    FontAttributes="Bold"
+                    CornerRadius="16"
+                    HeightRequest="34"
+                    Padding="14,0" />
+
+            <!-- TOP LOGO / TITLE CARD -->
+            <Border x:Name="cardHeader"
+                    BackgroundColor="#FCEEF2"
+                    Stroke="#7A1C4B"
+                    StrokeThickness="1.5"
+                    Padding="18">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="16" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
+                    <Label x:Name="lblBrandTitle"
+                           Text="PLKU"
+                           TextColor="#69143E"
+                           FontSize="28"
+                           FontAttributes="Bold"
+                           HorizontalTextAlignment="Center" />
+                    <Label x:Name="lblBrandSubtitle"
+                           Text="PRINCESS LEIGH KATE UNIVERSITY"
+                           TextColor="#69143E"
+                           FontSize="12"
+                           FontAttributes="Bold"
+                           CharacterSpacing="1.2"
+                           HorizontalTextAlignment="Center" />
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- ADMIN LOGIN -->
+            <Border x:Name="panelLogin"
+                    IsVisible="True"
+                    BackgroundColor="#FCEEF2"
+                    Stroke="#7A1C4B"
+                    StrokeThickness="1.5"
+                    Padding="20">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="16" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout Spacing="12">
+                    <Label x:Name="lblWelcome"
+                           Text="Welcome back, Admin!"
+                           TextColor="#69143E"
+                           FontSize="22"
+                           FontAttributes="Bold"
+                           HorizontalTextAlignment="Center" />
+
+                    <Label x:Name="lblWelcomeSub"
+                           Text="Please enter your credentials to access the Student Information System.
+Securely manage and access student records."
+                           TextColor="#7A2850"
+                           FontSize="12.5"
+                           HorizontalTextAlignment="Center" />
+
+                    <Label x:Name="lblAdminHeading"
+                           Text="ADMIN LOGIN"
+                           TextColor="#69143E"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           CharacterSpacing="0.8"
+                           HorizontalTextAlignment="Center"
+                           Margin="0,4,0,2" />
+
+                    <Label x:Name="lblAdminId"
+                           Text="Admin ID"
+                           TextColor="#3B0D24"
+                           FontSize="13"
+                           FontAttributes="Bold" />
+                    <Border BackgroundColor="#FFF5F8"
+                            Stroke="#8E295A"
+                            StrokeThickness="1.2"
+                            Padding="10,2">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="12" />
+                        </Border.StrokeShape>
+                        <Entry x:Name="entryUsername"
+                               Placeholder="Enter Admin ID"
+                               BackgroundColor="Transparent"
+                               TextColor="#2B091B"
+                               PlaceholderColor="#9E7B8B" />
+                    </Border>
+
+                    <Label x:Name="lblPassword"
+                           Text="Password"
+                           TextColor="#3B0D24"
+                           FontSize="13"
+                           FontAttributes="Bold" />
+                    <Border BackgroundColor="#FFF5F8"
+                            Stroke="#8E295A"
+                            StrokeThickness="1.2"
+                            Padding="10,2">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="12" />
+                        </Border.StrokeShape>
+                        <Entry x:Name="entryPassword"
+                               Placeholder="Enter Admin Password"
+                               IsPassword="True"
+                               BackgroundColor="Transparent"
+                               TextColor="#2B091B"
+                               PlaceholderColor="#9E7B8B" />
+                    </Border>
+
+                    <HorizontalStackLayout Spacing="8" VerticalOptions="Center">
+                        <CheckBox x:Name="chkShowPassword"
+                                  Color="#69143E"
+                                  CheckedChanged="OnShowPasswordCheckedChanged" />
+                        <Label x:Name="lblShowPassword"
+                               Text="Show Password"
+                               TextColor="#69143E"
+                               FontSize="12.5"
+                               FontAttributes="Bold"
+                               VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+
+                    <Label x:Name="lblLoginError"
+                           Text=""
+                           TextColor="#E57373"
+                           FontSize="12"
+                           IsVisible="False" />
+
+                    <Button Text="LOGIN"
+                            Clicked="OnLoginClicked"
+                            BackgroundColor="#69143E"
+                            TextColor="White"
+                            FontSize="17"
+                            FontAttributes="Bold"
+                            CornerRadius="12"
+                            HeightRequest="46"
+                            Margin="0,4,0,0" />
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- UNIVERSITY CHARTER BUTTONS -->
+            <Border x:Name="cardCharter"
+                    BackgroundColor="#FCEEF2"
+                    Stroke="#7A1C4B"
+                    StrokeThickness="1.5"
+                    Padding="18">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="16" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout Spacing="10">
+                    <Label x:Name="lblCharterMain"
+                           Text="UNIVERSITY CHARTER"
+                           TextColor="#69143E"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           HorizontalTextAlignment="Center"
+                           Margin="0,0,0,4" />
+
+                    <Button Text="Charter Book"
+                            Clicked="OnOpenInfoClicked"
+                            CommandParameter="CHARTER"
+                            BackgroundColor="#F8D7E4"
+                            BorderColor="#8E295A"
+                            BorderWidth="1.5"
+                            TextColor="#69143E"
+                            FontAttributes="Bold"
+                            CornerRadius="12"
+                            HeightRequest="46" />
+
+                    <Button Text="Programs and Faculty"
+                            Clicked="OnOpenInfoClicked"
+                            CommandParameter="FACULTY"
+                            BackgroundColor="#F8D7E4"
+                            BorderColor="#8E295A"
+                            BorderWidth="1.5"
+                            TextColor="#69143E"
+                            FontAttributes="Bold"
+                            CornerRadius="12"
+                            HeightRequest="46" />
+
+                    <Button Text="University's History"
+                            Clicked="OnOpenInfoClicked"
+                            CommandParameter="HISTORY"
+                            BackgroundColor="#F8D7E4"
+                            BorderColor="#8E295A"
+                            BorderWidth="1.5"
+                            TextColor="#69143E"
+                            FontAttributes="Bold"
+                            CornerRadius="12"
+                            HeightRequest="46" />
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- SYSTEM DATE & TIME CARD -->
+            <Border x:Name="cardClock"
+                    BackgroundColor="#FCEEF2"
+                    Stroke="#7A1C4B"
+                    StrokeThickness="1.5"
+                    Padding="16">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="16" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout Spacing="6">
+                    <Label x:Name="lblClockTitle"
+                           Text="System Date and Time"
+                           TextColor="#69143E"
+                           FontSize="13"
+                           FontAttributes="Bold" />
+                    <Label x:Name="lblSystemDate"
+                           Text="Sunday, November 22, 2026"
+                           TextColor="#69143E"
+                           FontSize="15"
+                           FontAttributes="Bold" />
+                    <Label x:Name="lblSystemTime"
+                           Text="02:57:00 AM"
+                           TextColor="#69143E"
+                           FontSize="15"
+                           FontAttributes="Bold" />
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- DYNAMIC INFO PANEL (CHARTER BOOK / HISTORY / FACULTY) -->
+            <Border x:Name="panelInfo"
+                    IsVisible="False"
+                    BackgroundColor="#FADADD"
+                    Stroke="#7A1C4B"
+                    StrokeThickness="1.5"
+                    Padding="18">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="16" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout Spacing="10">
+                    <Button Text="← Close"
+                            Clicked="OnBackToLoginClicked"
+                            BackgroundColor="#69143E"
+                            TextColor="White"
+                            FontAttributes="Bold"
+                            CornerRadius="10"
+                            HorizontalOptions="Start"
+                            Padding="14,6" />
+
+                    <Label x:Name="lblInfoTitle"
+                           Text=""
+                           TextColor="#5E163E"
+                           FontSize="17"
+                           FontAttributes="Bold"
+                           HorizontalTextAlignment="Center" />
+
+                    <Label x:Name="lblInfoSubtitle"
+                           Text=""
+                           TextColor="#89235B"
+                           FontSize="12.5"
+                           FontAttributes="Bold"
+                           HorizontalTextAlignment="Center" />
+
+                    <Border x:Name="cardInfoBody"
+                            BackgroundColor="#FFF5F8"
+                            Stroke="#E1BEE7"
+                            StrokeThickness="1"
+                            Padding="14">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="12" />
+                        </Border.StrokeShape>
+
+                        <Label x:Name="lblInfoBody"
+                               Text=""
+                               TextColor="#2B091B"
+                               FontSize="12" />
+                    </Border>
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- FOOTER -->
+            <Label x:Name="lblFooter"
+                   Text="© 2026 Princess Leigh Kate University. All Rights Reserved."
+                   TextColor="#FCEEF2"
+                   FontSize="11.5"
+                   HorizontalOptions="Center"
+                   HorizontalTextAlignment="Center"
+                   Margin="0,4,0,10" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
