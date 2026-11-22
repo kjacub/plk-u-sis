@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PLKUMobileApp.DashboardPage"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="#B85D85">
+
+    <ScrollView Padding="16">
+        <VerticalStackLayout Spacing="12">
+
+            <!-- GLOBAL DARK MODE TOGGLE -->
+            <Button x:Name="btnDarkMode"
+                    Text="🌙 Dark"
+                    Clicked="OnToggleDarkModeClicked"
+                    HorizontalOptions="End"
+                    BackgroundColor="#69143E"
+                    TextColor="#FCEEF2"
+                    BorderColor="#FCEEF2"
+                    BorderWidth="1"
+                    FontSize="12"
+                    FontAttributes="Bold"
+                    CornerRadius="16"
+                    HeightRequest="34"
+                    Padding="14,0" />
+
+            <!-- HEADER BANNER -->
+            <Border x:Name="cardHeader"
+                    BackgroundColor="#FCEEF2"
+                    Stroke="#7A1C4B"
+                    StrokeThickness="1.5"
+                    Padding="18">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="16" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
+                    <Label x:Name="lblDashTitle"
+                           Text="PLK UNIVERSITY"
+                           TextColor="#69143E"
+                           FontSize="24"
+                           FontAttributes="Bold"
+                           HorizontalTextAlignment="Center" />
+                    <Label x:Name="lblDashSubtitle"
+                           Text="Student Information System"
+                           TextColor="#7A2850"
+                           FontSize="12.5"
+                           FontAttributes="Bold"
+                           CharacterSpacing="0.8"
+                           HorizontalTextAlignment="Center" />
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- STUDENT INFORMATION INPUT CARD -->
+            <Border x:Name="cardForm"
+                    BackgroundColor="#FCEEF2"
+                    Stroke="#7A1C4B"
+                    StrokeThickness="1.5"
+                    Padding="18">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="16" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout Spacing="10">
+                    <Label x:Name="lblFormHeading"
+                           Text="Student Information"
+                           TextColor="#69143E"
+                           FontSize="17"
+                           FontAttributes="Bold" />
+
+                    <Label x:Name="lblStudentId" Text="Student ID:" TextColor="#3B0D24" FontSize="13" FontAttributes="Bold" />
+                    <Border x:Name="borderStudentId" BackgroundColor="#FFF5F8" Stroke="#8E295A" StrokeThickness="1.2" Padding="10,2">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="12" />
+                        </Border.StrokeShape>
+                        <Entry x:Name="entryStudentId"
+                               Placeholder="Enter Student ID"
+                               BackgroundColor="Transparent"
+                               TextColor="#2B091B"
+                               PlaceholderColor="#9E7B8B" />
+                    </Border>
+
+                    <Label x:Name="lblGender" Text="Gender:" TextColor="#3B0D24" FontSize="13" FontAttributes="Bold" />
+                    <HorizontalStackLayout Spacing="12">
+                        <RadioButton x:Name="rbMale"
+                 Content="Male"
+                 GroupName="GenderGroup"
+                 BackgroundColor="Transparent"
+                 TextColor="#3B0D24" />
+                        <RadioButton x:Name="rbFemale"
+                 Content="Female"
+                 GroupName="GenderGroup"
+                 IsChecked="True"
+                 BackgroundColor="Transparent"
+                 TextColor="#3B0D24" />
+                        <RadioButton x:Name="rbOther"
+                 Content="Other"
+                 GroupName="GenderGroup"
+                 BackgroundColor="Transparent"
+                 TextColor="#3B0D24" />
+                    </HorizontalStackLayout>
+
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                        <VerticalStackLayout Grid.Column="0" Spacing="4">
+                            <Label x:Name="lblFirstName" Text="First Name:" TextColor="#3B0D24" FontSize="13" FontAttributes="Bold" />
+                            <Border x:Name="borderFirstName" BackgroundColor="#FFF5F8" Stroke="#8E295A" StrokeThickness="1.2" Padding="10,2">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="12" />
+                                </Border.StrokeShape>
+                                <Entry x:Name="entryFirstName"
+                                       Placeholder="Enter First Name"
+                                       BackgroundColor="Transparent"
+                                       TextColor="#2B091B"
+                                       PlaceholderColor="#9E7B8B" />
+                            </Border>
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Column="1" Spacing="4">
+                            <Label x:Name="lblLastName" Text="Last Name:" TextColor="#3B0D24" FontSize="13" FontAttributes="Bold" />
+                            <Border x:Name="borderLastName" BackgroundColor="#FFF5F8" Stroke="#8E295A" StrokeThickness="1.2" Padding="10,2">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="12" />
+                                </Border.StrokeShape>
+                                <Entry x:Name="entryLastName"
+                                       Placeholder="Enter Last Name"
+                                       BackgroundColor="Transparent"
+                                       TextColor="#2B091B"
+                                       PlaceholderColor="#9E7B8B" />
+                            </Border>
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                        <VerticalStackLayout Grid.Column="0" Spacing="4">
+                            <Label x:Name="lblMiddleName" Text="Middle Name:" TextColor="#3B0D24" FontSize="13" FontAttributes="Bold" />
+                            <Border x:Name="borderMiddleName" BackgroundColor="#FFF5F8" Stroke="#8E295A" StrokeThickness="1.2" Padding="10,2">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="12" />
+                                </Border.StrokeShape>
+                                <Entry x:Name="entryMiddleName"
+                                       Placeholder="Enter Middle Name"
+                                       BackgroundColor="Transparent"
+                                       TextColor="#2B091B"
+                                       PlaceholderColor="#9E7B8B" />
+                            </Border>
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Column="1" Spacing="4">
+                            <Label x:Name="lblContact" Text="Contact Number:" TextColor="#3B0D24" FontSize="13" FontAttributes="Bold" />
+                            <Border x:Name="borderContact" BackgroundColor="#FFF5F8" Stroke="#8E295A" StrokeThickness="1.2" Padding="10,2">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="12" />
+                                </Border.StrokeShape>
+                                <Entry x:Name="entryContact"
+                                       Placeholder="09XXXXXXXXX"
+                                       Keyboard="Telephone"
+                                       BackgroundColor="Transparent"
+                                       TextColor="#2B091B"
+                                       PlaceholderColor="#9E7B8B" />
+                            </Border>
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <Label x:Name="lblProgram" Text="Program:" TextColor="#3B0D24" FontSize="13" FontAttributes="Bold" />
+                    <Border x:Name="borderProgram" BackgroundColor="#FFF5F8" Stroke="#8E295A" StrokeThickness="1.2" Padding="10,2">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="12" />
+                        </Border.StrokeShape>
+                        <Picker x:Name="pickerProgram"
+                                Title="Select Program"
+                                BackgroundColor="Transparent"
+                                TextColor="#2B091B"
+                                TitleColor="#9E7B8B">
+                            <Picker.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                    <x:String>BS in Historical Fashion</x:String>
+                                    <x:String>BS in Haute Couture and Luxury Fashion Design</x:String>
+                                    <x:String>BS in Cosmetic Science</x:String>
+                                    <x:String>BS in Floriculture and Botanical Design</x:String>
+                                </x:Array>
+                            </Picker.ItemsSource>
+                        </Picker>
+                    </Border>
+
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                        <VerticalStackLayout Grid.Column="0" Spacing="4">
+                            <Label x:Name="lblYearLevel" Text="Year Level:" TextColor="#3B0D24" FontSize="13" FontAttributes="Bold" />
+                            <Border x:Name="borderYearLevel" BackgroundColor="#FFF5F8" Stroke="#8E295A" StrokeThickness="1.2" Padding="10,2">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="12" />
+                                </Border.StrokeShape>
+                                <Picker x:Name="pickerYearLevel"
+                                        Title="Year Level"
+                                        BackgroundColor="Transparent"
+                                        TextColor="#2B091B"
+                                        TitleColor="#9E7B8B">
+                                    <Picker.ItemsSource>
+                                        <x:Array Type="{x:Type x:String}">
+                                            <x:String>1st Year</x:String>
+                                            <x:String>2nd Year</x:String>
+                                            <x:String>3rd Year</x:String>
+                                            <x:String>4th Year</x:String>
+                                        </x:Array>
+                                    </Picker.ItemsSource>
+                                </Picker>
+                            </Border>
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Column="1" Spacing="4">
+                            <Label x:Name="lblStatus" Text="Academic Status:" TextColor="#3B0D24" FontSize="13" FontAttributes="Bold" />
+                            <Border x:Name="borderStatus" BackgroundColor="#FFF5F8" Stroke="#8E295A" StrokeThickness="1.2" Padding="10,2">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="12" />
+                                </Border.StrokeShape>
+                                <Picker x:Name="pickerStatus"
+                                        Title="Status"
+                                        BackgroundColor="Transparent"
+                                        TextColor="#2B091B"
+                                        TitleColor="#9E7B8B">
+                                    <Picker.ItemsSource>
+                                        <x:Array Type="{x:Type x:String}">
+                                            <x:String>Enrolled</x:String>
+                                            <x:String>Irregular</x:String>
+                                            <x:String>Graduated</x:String>
+                                            <x:String>Dropped</x:String>
+                                            <x:String>Transferred Out</x:String>
+                                        </x:Array>
+                                    </Picker.ItemsSource>
+                                </Picker>
+                            </Border>
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <Label x:Name="lblEnrollYear" Text="Enrollment Year:" TextColor="#3B0D24" FontSize="13" FontAttributes="Bold" />
+                    <Border x:Name="borderEnrollYear" BackgroundColor="#FFF5F8" Stroke="#8E295A" StrokeThickness="1.2" Padding="10,2">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="12" />
+                        </Border.StrokeShape>
+                        <Picker x:Name="pickerEnrollmentYear"
+                                Title="Select Enrollment Year"
+                                BackgroundColor="Transparent"
+                                TextColor="#2B091B"
+                                TitleColor="#9E7B8B">
+                            <Picker.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                    <x:String>2022</x:String>
+                                    <x:String>2023</x:String>
+                                    <x:String>2024</x:String>
+                                    <x:String>2025</x:String>
+                                    <x:String>2026</x:String>
+                                </x:Array>
+                            </Picker.ItemsSource>
+                        </Picker>
+                    </Border>
+
+                    <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto" ColumnSpacing="10" RowSpacing="10" Margin="0,6,0,0">
+                        <Button Grid.Row="0" Grid.Column="0"
+                                Text="Add Student"
+                                Clicked="OnAddStudentClicked"
+                                BackgroundColor="#F10291"
+                                TextColor="White"
+                                FontAttributes="Bold"
+                                CornerRadius="12"
+                                HeightRequest="46" />
+
+                        <Button Grid.Row="0" Grid.Column="1"
+                                Text="Update Student"
+                                Clicked="OnUpdateStudentClicked"
+                                BackgroundColor="#69143E"
+                                TextColor="White"
+                                FontAttributes="Bold"
+                                CornerRadius="12"
+                                HeightRequest="46" />
+
+                        <Button Grid.Row="1" Grid.Column="0"
+                                Text="Delete Student"
+                                Clicked="OnDeleteStudentClicked"
+                                BackgroundColor="#2B091B"
+                                TextColor="White"
+                                FontAttributes="Bold"
+                                CornerRadius="12"
+                                HeightRequest="46" />
+
+                        <Button x:Name="btnClearFields"
+                                Grid.Row="1" Grid.Column="1"
+                                Text="Clear Fields"
+                                Clicked="OnClearFieldsClicked"
+                                BackgroundColor="#F8D7E4"
+                                BorderColor="#8E295A"
+                                BorderWidth="1.5"
+                                TextColor="#69143E"
+                                FontAttributes="Bold"
+                                CornerRadius="12"
+                                HeightRequest="46" />
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
+
+            <!--  BUTTONS  -->
+            <Border x:Name="cardNav"
+                    BackgroundColor="#FCEEF2"
+                    Stroke="#7A1C4B"
+                    StrokeThickness="1.5"
+                    Padding="18">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="16" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout Spacing="10">
+                    <Button x:Name="btnViewDirectory"
+                            Text="View Student Directory"
+                            Clicked="OnViewAllDirectoryClicked"
+                            BackgroundColor="#F8D7E4"
+                            BorderColor="#8E295A"
+                            BorderWidth="1.5"
+                            TextColor="#69143E"
+                            FontAttributes="Bold"
+                            CornerRadius="12"
+                            HeightRequest="46" />
+
+                    <Button x:Name="btnViewCharts"
+                            Text="View Student Charts &amp; Reports"
+                            Clicked="OnViewChartsClicked"
+                            BackgroundColor="#F8D7E4"
+                            BorderColor="#8E295A"
+                            BorderWidth="1.5"
+                            TextColor="#69143E"
+                            FontAttributes="Bold"
+                            CornerRadius="12"
+                            HeightRequest="46" />
+
+                    <Button x:Name="btnExitDashboard"
+                            Text="Exit Dashboard"
+                            Clicked="OnExitDashboardClicked"
+                            BackgroundColor="#FFF5F8"
+                            BorderColor="#69143E"
+                            BorderWidth="1.5"
+                            TextColor="#69143E"
+                            FontAttributes="Bold"
+                            CornerRadius="12"
+                            HeightRequest="44" />
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- FOOTER -->
+            <Label x:Name="lblFooter"
+                   Text="© 2026 Princess Leigh Kate University. All Rights Reserved."
+                   TextColor="#FCEEF2"
+                   FontSize="11.5"
+                   HorizontalOptions="Center"
+                   HorizontalTextAlignment="Center"
+                   Margin="0,4,0,10" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
