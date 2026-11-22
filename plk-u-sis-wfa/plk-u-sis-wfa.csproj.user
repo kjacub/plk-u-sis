@@ -4,6 +4,9 @@
     <Compile Update="PLKCharterBook.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="PLKChartsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="PLKHistory.cs">
       <SubType>Form</SubType>
     </Compile>
