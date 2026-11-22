@@ -1,0 +1,316 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:PLKUMobileApp"
+             x:Class="PLKUMobileApp.Directory"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="{AppThemeBinding Light=#FFF3F2, Dark=#1A0B14}">
+
+    <Grid RowDefinitions="Auto,Auto,Auto,*" Padding="0">
+
+        <!-- 1. TOP PLK UNIVERSITY HEADER + BACK + GLOBAL DARK MODE TOGGLE -->
+        <Border x:Name="cardHeader"
+                Grid.Row="0"
+                BackgroundColor="{AppThemeBinding Light=#89235B, Dark=#380D24}"
+                StrokeThickness="0"
+                Padding="18,16,18,16">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="0,0,24,24" />
+            </Border.StrokeShape>
+
+            <VerticalStackLayout Spacing="8">
+                <!-- Top Row: Minimalist Back Pill & Global Dark Mode Button (Same as LoginPage & DashboardPage) -->
+                <Grid ColumnDefinitions="Auto,*,Auto" VerticalOptions="Center">
+                    <Button Grid.Column="0"
+                            Text="← Back"
+                            Clicked="OnBackClicked"
+                            BackgroundColor="#4A0E2E"
+                            TextColor="#FFCAE4"
+                            BorderColor="#F10291"
+                            BorderWidth="1"
+                            FontSize="12"
+                            FontAttributes="Bold"
+                            CornerRadius="16"
+                            HeightRequest="32"
+                            Padding="12,0"
+                            VerticalOptions="Center" />
+
+                    <Button x:Name="btnDarkMode"
+                            Grid.Column="2"
+                            Text="🌙 Dark"
+                            Clicked="OnToggleDarkModeClicked"
+                            BackgroundColor="#69143E"
+                            TextColor="#FCEEF2"
+                            BorderColor="#FCEEF2"
+                            BorderWidth="1"
+                            FontSize="11.5"
+                            FontAttributes="Bold"
+                            CornerRadius="14"
+                            HeightRequest="30"
+                            Padding="12,0"
+                            VerticalOptions="Center" />
+                </Grid>
+
+                <!-- Header Title & Record Count -->
+                <VerticalStackLayout Spacing="2">
+                    <Label Text="PLK UNIVERSITY"
+                           FontSize="12"
+                           FontAttributes="Bold"
+                           CharacterSpacing="1.5"
+                           TextColor="#FFCAE4" />
+                    <Label Text="Student Directory"
+                           FontSize="24"
+                           FontAttributes="Bold"
+                           TextColor="White" />
+                    <Label x:Name="lblRecordCount"
+                           Text="Loading records..."
+                           FontSize="12"
+                           TextColor="#FCE4EC" />
+                </VerticalStackLayout>
+            </VerticalStackLayout>
+        </Border>
+
+        <!-- 2. SEARCH BAR -->
+        <Border Grid.Row="1"
+                Margin="16,12,16,6"
+                Padding="12,2"
+                BackgroundColor="{AppThemeBinding Light=White, Dark=#2A1220}"
+                Stroke="{AppThemeBinding Light=#F48FB1, Dark=#89235B}"
+                StrokeThickness="1.5">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="16" />
+            </Border.StrokeShape>
+            <Grid ColumnDefinitions="Auto,*,Auto">
+                <Label Grid.Column="0"
+                       Text="🔍"
+                       FontSize="16"
+                       VerticalOptions="Center"
+                       Margin="0,0,8,0" />
+                <Entry x:Name="entrySearch"
+                       Grid.Column="1"
+                       Placeholder="Search by name or Student ID..."
+                       PlaceholderColor="{AppThemeBinding Light=#9E6B84, Dark=#B3889E}"
+                       TextColor="{AppThemeBinding Light=#4A0E2E, Dark=#FFF3F2}"
+                       TextChanged="entrySearch_TextChanged" />
+                <Button x:Name="btnClearSearch"
+                        Grid.Column="2"
+                        Text="✕"
+                        FontSize="13"
+                        BackgroundColor="Transparent"
+                        TextColor="#89235B"
+                        Padding="6,0"
+                        IsVisible="False"
+                        Clicked="btnClearSearch_Clicked" />
+            </Grid>
+        </Border>
+
+        <!-- 3. QUICK-FILTER CHIPS (YEAR LEVEL & PROGRAM) -->
+        <VerticalStackLayout Grid.Row="2" Spacing="8" Margin="0,4,0,8" Padding="16,0">
+
+            <!-- Year Level Chips (Wraps cleanly inside screen width) -->
+            <FlexLayout x:Name="yearChipsContainer"
+                        Direction="Row"
+                        Wrap="Wrap"
+                        JustifyContent="Start"
+                        AlignItems="Center">
+                <Button Text="All Years" Clicked="OnYearFilterClicked" ClassId="ALL"
+                        BackgroundColor="#89235B" TextColor="White" CornerRadius="18" HeightRequest="32" FontSize="11.5" Padding="12,0" Margin="0,0,6,6" />
+                <Button Text="1st Year" Clicked="OnYearFilterClicked" ClassId="1st Year"
+                        BackgroundColor="#FCE4EC" TextColor="#4A0E2E" CornerRadius="18" HeightRequest="32" FontSize="11.5" Padding="12,0" Margin="0,0,6,6" />
+                <Button Text="2nd Year" Clicked="OnYearFilterClicked" ClassId="2nd Year"
+                        BackgroundColor="#FCE4EC" TextColor="#4A0E2E" CornerRadius="18" HeightRequest="32" FontSize="11.5" Padding="12,0" Margin="0,0,6,6" />
+                <Button Text="3rd Year" Clicked="OnYearFilterClicked" ClassId="3rd Year"
+                        BackgroundColor="#FCE4EC" TextColor="#4A0E2E" CornerRadius="18" HeightRequest="32" FontSize="11.5" Padding="12,0" Margin="0,0,6,6" />
+                <Button Text="4th Year" Clicked="OnYearFilterClicked" ClassId="4th Year"
+                        BackgroundColor="#FCE4EC" TextColor="#4A0E2E" CornerRadius="18" HeightRequest="32" FontSize="11.5" Padding="12,0" Margin="0,0,6,6" />
+            </FlexLayout>
+
+            <!-- Program Chips (Wraps cleanly inside screen width) -->
+            <FlexLayout x:Name="programChipsContainer"
+                        Direction="Row"
+                        Wrap="Wrap"
+                        JustifyContent="Start"
+                        AlignItems="Center">
+                <Button Text="All Programs" Clicked="OnProgramFilterClicked" ClassId="ALL"
+                        BackgroundColor="#F10291" TextColor="White" CornerRadius="18" HeightRequest="32" FontSize="11.5" Padding="12,0" Margin="0,0,6,6" />
+                <Button Text="Cosmetic Science" Clicked="OnProgramFilterClicked" ClassId="BS in Cosmetic Science"
+                        BackgroundColor="#FCE4EC" TextColor="#4A0E2E" CornerRadius="18" HeightRequest="32" FontSize="11.5" Padding="12,0" Margin="0,0,6,6" />
+                <Button Text="Floriculture" Clicked="OnProgramFilterClicked" ClassId="BS in Floriculture and Botanical Design"
+                        BackgroundColor="#FCE4EC" TextColor="#4A0E2E" CornerRadius="18" HeightRequest="32" FontSize="11.5" Padding="12,0" Margin="0,0,6,6" />
+                <Button Text="Historical Fashion" Clicked="OnProgramFilterClicked" ClassId="BS in Historical Fashion"
+                        BackgroundColor="#FCE4EC" TextColor="#4A0E2E" CornerRadius="18" HeightRequest="32" FontSize="11.5" Padding="12,0" Margin="0,0,6,6" />
+                <Button Text="Haute Couture" Clicked="OnProgramFilterClicked" ClassId="BS in Haute Couture and Luxury Fashion Design"
+                        BackgroundColor="#FCE4EC" TextColor="#4A0E2E" CornerRadius="18" HeightRequest="32" FontSize="11.5" Padding="12,0" Margin="0,0,6,6" />
+            </FlexLayout>
+        </VerticalStackLayout>
+
+        <!-- 4. STUDENT CARDS LIST (WITH PULL-TO-REFRESH) -->
+        <RefreshView x:Name="refreshView"
+                     Grid.Row="3"
+                     RefreshColor="#F10291"
+                     Refreshing="refreshView_Refreshing">
+            <CollectionView x:Name="cvStudents"
+                            SelectionMode="None"
+                            Margin="16,0,16,12">
+                <CollectionView.EmptyView>
+                    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Padding="30" Spacing="8">
+                        <Label Text="No matching students found."
+                               FontSize="16"
+                               FontAttributes="Bold"
+                               HorizontalOptions="Center"
+                               TextColor="{AppThemeBinding Light=#89235B, Dark=#FFCAE4}" />
+                        <Label Text="Try clearing your search or filter chips."
+                               FontSize="13"
+                               HorizontalOptions="Center"
+                               TextColor="{AppThemeBinding Light=#7A4961, Dark=#C49BB0}" />
+                    </VerticalStackLayout>
+                </CollectionView.EmptyView>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="local:Student">
+                        <Border Margin="0,0,0,10"
+                                Padding="16,14"
+                                BackgroundColor="{AppThemeBinding Light=White, Dark=#2A1220}"
+                                Stroke="{AppThemeBinding Light=#FFCAE4, Dark=#5C193D}"
+                                StrokeThickness="1.2">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="18" />
+                            </Border.StrokeShape>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnStudentCardTapped" CommandParameter="{Binding .}" />
+                            </Border.GestureRecognizers>
+
+                            <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto,Auto" RowSpacing="4">
+                                <!-- Student ID + Status Pill -->
+                                <Label Grid.Row="0" Grid.Column="0"
+                                       Text="{Binding StudentId}"
+                                       FontSize="12"
+                                       FontAttributes="Bold"
+                                       TextColor="#F10291" />
+
+                                <Border Grid.Row="0" Grid.Column="1"
+                                        BackgroundColor="{Binding StatusBadgeColor}"
+                                        StrokeThickness="0"
+                                        Padding="10,3">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="12" />
+                                    </Border.StrokeShape>
+                                    <Label Text="{Binding CleanStatus}"
+                                           FontSize="11"
+                                           FontAttributes="Bold"
+                                           TextColor="White" />
+                                </Border>
+
+                                <!-- Full Name -->
+                                <Label Grid.Row="1" Grid.ColumnSpan="2"
+                                       Text="{Binding FullName}"
+                                       FontSize="17"
+                                       FontAttributes="Bold"
+                                       TextColor="{AppThemeBinding Light=#4A0E2E, Dark=#FFF3F2}" />
+
+                                <!-- Program + Year Level -->
+                                <Label Grid.Row="2" Grid.ColumnSpan="2"
+                                       FontSize="13"
+                                       TextColor="{AppThemeBinding Light=#7A4961, Dark=#E0B8CC}">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Binding ShortProgram}" FontAttributes="Bold" />
+                                            <Span Text="  •  " />
+                                            <Span Text="{Binding YearLevel}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+
+        <!-- 5. STUDENT PROFILE DETAIL POPUP OVERLAY -->
+        <Grid x:Name="popupOverlay"
+              Grid.RowSpan="4"
+              BackgroundColor="#99000000"
+              IsVisible="False"
+              Padding="24">
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnClosePopupTapped" />
+            </Grid.GestureRecognizers>
+
+            <Border VerticalOptions="Center"
+                    HorizontalOptions="Fill"
+                    BackgroundColor="{AppThemeBinding Light=White, Dark=#2A1220}"
+                    Stroke="#F10291"
+                    StrokeThickness="2"
+                    Padding="22">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="24" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout Spacing="12">
+                    <!-- Popup Header -->
+                    <Grid ColumnDefinitions="*,Auto">
+                        <VerticalStackLayout Grid.Column="0" Spacing="2">
+                            <Label x:Name="lblPopupId"
+                                   Text="2026-0001"
+                                   FontSize="13"
+                                   FontAttributes="Bold"
+                                   TextColor="#F10291" />
+                            <Label x:Name="lblPopupFullName"
+                                   Text="Student Full Name"
+                                   FontSize="20"
+                                   FontAttributes="Bold"
+                                   TextColor="{AppThemeBinding Light=#4A0E2E, Dark=White}" />
+                        </VerticalStackLayout>
+
+                        <Border x:Name="badgePopupStatus"
+                                Grid.Column="1"
+                                VerticalOptions="Start"
+                                BackgroundColor="#89235B"
+                                StrokeThickness="0"
+                                Padding="12,5">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="14" />
+                            </Border.StrokeShape>
+                            <Label x:Name="lblPopupStatus"
+                                   Text="Active"
+                                   FontSize="12"
+                                   FontAttributes="Bold"
+                                   TextColor="White" />
+                        </Border>
+                    </Grid>
+
+                    <BoxView HeightRequest="1" Color="{AppThemeBinding Light=#FFCAE4, Dark=#5C193D}" />
+
+                    <!-- Details Grid -->
+                    <Grid ColumnDefinitions="120,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto" RowSpacing="10">
+                        <Label Grid.Row="0" Grid.Column="0" Text="Program:" FontAttributes="Bold" TextColor="#89235B" />
+                        <Label x:Name="lblPopupProgram" Grid.Row="0" Grid.Column="1" TextColor="{AppThemeBinding Light=#4A0E2E, Dark=#FFF3F2}" />
+
+                        <Label Grid.Row="1" Grid.Column="0" Text="Year Level:" FontAttributes="Bold" TextColor="#89235B" />
+                        <Label x:Name="lblPopupYearLevel" Grid.Row="1" Grid.Column="1" TextColor="{AppThemeBinding Light=#4A0E2E, Dark=#FFF3F2}" />
+
+                        <Label Grid.Row="2" Grid.Column="0" Text="Gender:" FontAttributes="Bold" TextColor="#89235B" />
+                        <Label x:Name="lblPopupGender" Grid.Row="2" Grid.Column="1" TextColor="{AppThemeBinding Light=#4A0E2E, Dark=#FFF3F2}" />
+
+                        <Label Grid.Row="3" Grid.Column="0" Text="Contact No.:" FontAttributes="Bold" TextColor="#89235B" />
+                        <Label x:Name="lblPopupContact" Grid.Row="3" Grid.Column="1" TextColor="{AppThemeBinding Light=#4A0E2E, Dark=#FFF3F2}" />
+
+                        <Label Grid.Row="4" Grid.Column="0" Text="Batch Year:" FontAttributes="Bold" TextColor="#89235B" />
+                        <Label x:Name="lblPopupBatch" Grid.Row="4" Grid.Column="1" TextColor="{AppThemeBinding Light=#4A0E2E, Dark=#FFF3F2}" />
+                    </Grid>
+
+                    <Button Text="Close Profile"
+                            Margin="0,10,0,0"
+                            BackgroundColor="#89235B"
+                            TextColor="White"
+                            FontAttributes="Bold"
+                            CornerRadius="16"
+                            HeightRequest="44"
+                            Clicked="OnClosePopupTapped" />
+                </VerticalStackLayout>
+            </Border>
+        </Grid>
+
+    </Grid>
+</ContentPage>

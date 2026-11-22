@@ -1,19 +1,16 @@
-﻿
+﻿using System;
+using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
 namespace plk_u_sis_wfa
 {
     public class DBConnection
     {
-        private static readonly string connectionString =
-            BuildConnectionString();
+        private static readonly string connectionString = BuildConnectionString();
 
         private static string BuildConnectionString()
         {
-            string password =
-                Environment.GetEnvironmentVariable("PLK_DB_PASSWORD")
-                ?? throw new InvalidOperationException(
-                    "PLK_DB_PASSWORD environment variable is missing.");
+            string password = Environment.GetEnvironmentVariable("PLK_DB_PASSWORD") ?? "";
 
             var builder = new MySqlConnectionStringBuilder
             {
@@ -31,6 +28,7 @@ namespace plk_u_sis_wfa
         {
             return new MySqlConnection(connectionString);
         }
+
         public static bool TestConnection()
         {
             try

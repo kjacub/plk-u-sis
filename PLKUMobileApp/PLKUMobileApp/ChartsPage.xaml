@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PLKUMobileApp.ChartsPage"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="#B85D85">
+
+    <ScrollView Padding="16">
+        <VerticalStackLayout Spacing="12">
+
+            <!-- GLOBAL DARK MODE TOGGLE -->
+            <Button x:Name="btnDarkMode"
+                    Text="🌙 Dark"
+                    Clicked="OnToggleDarkModeClicked"
+                    HorizontalOptions="End"
+                    BackgroundColor="#69143E"
+                    TextColor="#FCEEF2"
+                    BorderColor="#FCEEF2"
+                    BorderWidth="1"
+                    FontSize="12"
+                    FontAttributes="Bold"
+                    CornerRadius="16"
+                    HeightRequest="34"
+                    Padding="14,0" />
+
+            <!-- HEADER BANNER -->
+            <Border x:Name="cardHeader"
+                    BackgroundColor="#FCEEF2"
+                    Stroke="#7A1C4B"
+                    StrokeThickness="1.5"
+                    Padding="16">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="16" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout Spacing="2" HorizontalOptions="Center">
+                    <Label x:Name="lblChartsTitle"
+                           Text="STUDENT CHARTS &amp; REPORTS"
+                           TextColor="#69143E"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           HorizontalTextAlignment="Center" />
+                    <Label x:Name="lblChartsSubtitle"
+                           Text="Enrollment Rate • Survival Rate • Status Distribution"
+                           TextColor="#7A2850"
+                           FontSize="12"
+                           HorizontalTextAlignment="Center" />
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- 1. ENROLLMENT COUNT PER YEAR (BY PROGRAM) -->
+            <Border x:Name="cardEnrollmentChart"
+                    BackgroundColor="#FCEEF2"
+                    Stroke="#7A1C4B"
+                    StrokeThickness="1.5"
+                    Padding="16">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="16" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout Spacing="10">
+                    <Label x:Name="lblEnrollmentTitle"
+                           Text="Enrollment Count per Year (by Program)"
+                           TextColor="#69143E"
+                           FontSize="15"
+                           FontAttributes="Bold"
+                           HorizontalTextAlignment="Center" />
+
+                    <GraphicsView x:Name="gvEnrollmentChart"
+                                  HeightRequest="220" />
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- 2. SURVIVAL RATE PER COURSE (GRADUATED %) -->
+            <Border x:Name="cardSurvivalChart"
+                    BackgroundColor="#FCEEF2"
+                    Stroke="#7A1C4B"
+                    StrokeThickness="1.5"
+                    Padding="16">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="16" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout Spacing="10">
+                    <Label x:Name="lblSurvivalTitle"
+                           Text="Survival Rate per Course (Graduated %)"
+                           TextColor="#69143E"
+                           FontSize="15"
+                           FontAttributes="Bold"
+                           HorizontalTextAlignment="Center" />
+
+                    <GraphicsView x:Name="gvSurvivalChart"
+                                  HeightRequest="220" />
+
+                    <VerticalStackLayout x:Name="survivalSummaryContainer" Spacing="4" />
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- 3. STUDENT STATUS DISTRIBUTION (TRANSFER RATE) -->
+            <Border x:Name="cardStatusChart"
+                    BackgroundColor="#FCEEF2"
+                    Stroke="#7A1C4B"
+                    StrokeThickness="1.5"
+                    Padding="16">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="16" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout Spacing="10">
+                    <Label x:Name="lblStatusTitle"
+                           Text="Student Status Distribution (Transfer Rate)"
+                           TextColor="#69143E"
+                           FontSize="15"
+                           FontAttributes="Bold"
+                           HorizontalTextAlignment="Center" />
+
+                    <Grid ColumnDefinitions="1.1*, 1*" ColumnSpacing="10" VerticalOptions="Center">
+                        <GraphicsView x:Name="gvStatusPieChart"
+                                      Grid.Column="0"
+                                      HeightRequest="180" />
+
+                        <VerticalStackLayout x:Name="statusLegendContainer"
+                                             Grid.Column="1"
+                                             Spacing="6"
+                                             VerticalOptions="Center" />
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- EXPORT & ACTION BUTTONS -->
+            <Border x:Name="cardActions"
+                    BackgroundColor="#FCEEF2"
+                    Stroke="#7A1C4B"
+                    StrokeThickness="1.5"
+                    Padding="16">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="16" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout Spacing="10">
+                    <Button x:Name="btnExportEnrollment"
+                            Text="Export Enrollment Rate Chart (PDF)"
+                            Clicked="OnExportEnrollmentClicked"
+                            BackgroundColor="#F8D7E4"
+                            BorderColor="#7A1C4B"
+                            BorderWidth="1.2"
+                            TextColor="#69143E"
+                            FontAttributes="Bold"
+                            CornerRadius="10"
+                            HeightRequest="44" />
+
+                    <Button x:Name="btnExportSurvival"
+                            Text="Export Survival Rate Chart (PDF)"
+                            Clicked="OnExportSurvivalClicked"
+                            BackgroundColor="#F8D7E4"
+                            BorderColor="#7A1C4B"
+                            BorderWidth="1.2"
+                            TextColor="#69143E"
+                            FontAttributes="Bold"
+                            CornerRadius="10"
+                            HeightRequest="44" />
+
+                    <Button x:Name="btnExportTransfer"
+                            Text="Export Transfer Rate Chart (PDF)"
+                            Clicked="OnExportTransferClicked"
+                            BackgroundColor="#F8D7E4"
+                            BorderColor="#7A1C4B"
+                            BorderWidth="1.2"
+                            TextColor="#69143E"
+                            FontAttributes="Bold"
+                            CornerRadius="10"
+                            HeightRequest="44" />
+
+                    <Button x:Name="btnRefreshCharts"
+                            Text="Refresh Charts"
+                            Clicked="OnRefreshChartsClicked"
+                            BackgroundColor="#69143E"
+                            TextColor="#FCEEF2"
+                            FontAttributes="Bold"
+                            CornerRadius="10"
+                            HeightRequest="44" />
+
+                    <Button x:Name="btnBackToDashboard"
+                            Text="Back to Dashboard"
+                            Clicked="OnBackToDashboardClicked"
+                            BackgroundColor="#3B0D24"
+                            TextColor="#FCEEF2"
+                            FontAttributes="Bold"
+                            CornerRadius="10"
+                            HeightRequest="44" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Label x:Name="lblFooter"
+                   Text="PLK University • Student Information System"
+                   TextColor="#FCEEF2"
+                   FontSize="11.5"
+                   HorizontalTextAlignment="Center"
+                   Margin="0,2,0,10" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
