@@ -1,3 +1,5 @@
+using MySqlConnector;
+
 namespace PLKUMobileApp
 {
     public partial class LoginPage : ContentPage
@@ -208,6 +210,116 @@ namespace PLKUMobileApp
             panelInfo.IsVisible = false;
         }
 
+        private async Task<bool> EnsureDatabasePasswordAsync()
+        {
+            string pwd = await DatabaseConfig.GetPasswordAsync();
+
+            if (string.IsNullOrEmpty(pwd))
+            {
+                var passwordEntry = new Entry
+                {
+                    Placeholder = "Enter database password",
+                    IsPassword = true
+                };
+
+                var completion = new TaskCompletionSource<string?>();
+
+                var saveButton = new Button
+                {
+                    Text = "Connect"
+                };
+
+                var cancelButton = new Button
+                {
+                    Text = "Cancel"
+                };
+
+                var passwordPage = new ContentPage
+                {
+                    Content = new VerticalStackLayout
+                    {
+                        Padding = 25,
+                        Spacing = 15,
+                        VerticalOptions = LayoutOptions.Center,
+                        Children =
+                {
+                    new Label
+                    {
+                        Text = "Database Configuration",
+                        FontSize = 24,
+                        FontAttributes = FontAttributes.Bold
+                    },
+                    new Label
+                    {
+                        Text = "Enter the MySQL database password."
+                    },
+                    passwordEntry,
+                    saveButton,
+                    cancelButton
+                }
+                    }
+                };
+
+                saveButton.Clicked += (s, e) =>
+                {
+                    completion.TrySetResult(passwordEntry.Text);
+                };
+
+                cancelButton.Clicked += (s, e) =>
+                {
+                    completion.TrySetResult(null);
+                };
+
+                passwordPage.Disappearing += (s, e) =>
+                {
+                    completion.TrySetResult(null);
+                };
+
+                await Navigation.PushModalAsync(passwordPage);
+
+                pwd = await completion.Task ?? "";
+
+                if (Navigation.ModalStack.Contains(passwordPage))
+                    await Navigation.PopModalAsync();
+
+                if (string.IsNullOrEmpty(pwd))
+                    return false;
+            }
+
+            try
+            {
+                var builder = new MySqlConnectionStringBuilder
+                {
+                    Server = "10.0.2.2",
+                    Port = 3306,
+                    Database = "plk_u_sis_db",
+                    UserID = "capstone_user",
+                    Password = pwd,
+                    ConnectionTimeout = 10
+                };
+
+                using var conn = new MySqlConnection(
+                    builder.ConnectionString);
+
+                await conn.OpenAsync();
+
+                await DatabaseConfig.SavePasswordAsync(pwd);
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Microsoft.Maui.Storage.SecureStorage.Default
+                    .Remove("PLK_DB_PASSWORD");
+
+                await DisplayAlertAsync(
+                "Database Connection Failed",
+                $"{ex.GetType().Name}: {ex.Message}",
+                "OK");
+
+                return false;
+            }
+        }
         private async void OnLoginClicked(object? sender, EventArgs e)
         {
             string username = entryUsername.Text?.Trim() ?? "";
@@ -220,9 +332,18 @@ namespace PLKUMobileApp
                 return;
             }
 
-            if (username.Equals("admin05611", StringComparison.OrdinalIgnoreCase) && password == "projecthailmary")
+            if ((username.Equals("admin05611", StringComparison.OrdinalIgnoreCase) ||
+                 username.Equals("admin14090", StringComparison.OrdinalIgnoreCase) ||
+                 username.Equals("admin06154", StringComparison.OrdinalIgnoreCase)) &&
+                 password == "projecthailmary")
             {
                 lblLoginError.IsVisible = false;
+
+                bool databaseReady = await EnsureDatabasePasswordAsync();
+
+                if (!databaseReady)
+                    return;
+
                 await Shell.Current.GoToAsync(nameof(DashboardPage));
             }
             else

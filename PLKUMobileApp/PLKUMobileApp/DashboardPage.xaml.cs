@@ -7,13 +7,19 @@ namespace PLKUMobileApp
         private bool _isSanitizingLetters;
         private bool _isShowingLetterWarning;
 
-        private string ConnectionString
+        private async Task<string> GetConnectionStringAsync()
         {
-            get
+            string pwd = await DatabaseConfig.GetPasswordAsync();
+
+            return new MySqlConnectionStringBuilder
             {
-                string pwd = Environment.GetEnvironmentVariable("PLK_DB_PASSWORD") ?? "";
-                return $"Server=10.0.2.2;Port=3306;Database=plk_u_sis_db;Uid=root;Pwd={pwd};Connection Timeout=5;";
-            }
+                Server = "10.0.2.2",
+                Port = 3306,
+                Database = "plk_u_sis_db",
+                UserID = "capstone_user",
+                Password = pwd,
+                ConnectionTimeout = 10
+            }.ConnectionString;
         }
 
         public DashboardPage()
@@ -196,8 +202,7 @@ namespace PLKUMobileApp
 
             try
             {
-                using var conn = new MySqlConnection(ConnectionString);
-                await conn.OpenAsync();
+                using var conn = new MySqlConnection(await GetConnectionStringAsync()); await conn.OpenAsync();
 
                 string sql = @"INSERT INTO students 
                     (student_id, first_name, middle_name, last_name, gender, year_level, program, contact_number, enrollment_year, academic_status, is_deleted)
@@ -258,7 +263,7 @@ namespace PLKUMobileApp
 
             try
             {
-                using var conn = new MySqlConnection(ConnectionString);
+                using var conn = new MySqlConnection(await GetConnectionStringAsync());
                 await conn.OpenAsync();
 
                 string sql = @"UPDATE students 
@@ -316,7 +321,7 @@ namespace PLKUMobileApp
 
             try
             {
-                using var conn = new MySqlConnection(ConnectionString);
+                using var conn = new MySqlConnection(await GetConnectionStringAsync());
                 await conn.OpenAsync();
 
                 string sql = "UPDATE students SET is_deleted = 1 WHERE student_id = @id AND is_deleted = 0";

@@ -5,15 +5,20 @@ namespace PLKUMobileApp
 {
     public partial class ChartsPage : ContentPage
     {
-        private string ConnectionString
+        private async Task<string> GetConnectionStringAsync()
         {
-            get
-            {
-                string pwd = Environment.GetEnvironmentVariable("PLK_DB_PASSWORD") ?? "";
-                return $"Server=10.0.2.2;Port=3306;Database=plk_u_sis_db;Uid=root;Pwd={pwd};";
-            }
-        }
+            string pwd = await DatabaseConfig.GetPasswordAsync();
 
+            return new MySqlConnectionStringBuilder
+            {
+                Server = "10.0.2.2",
+                Port = 3306,
+                Database = "plk_u_sis_db",
+                UserID = "capstone_user",
+                Password = pwd,
+                ConnectionTimeout = 10
+            }.ConnectionString;
+        }
 
         private readonly string[] _years = ["2023", "2024", "2025", "2026"];
         private readonly (string FullName, string ShortName, Color Color)[] _programs =
@@ -343,8 +348,7 @@ namespace PLKUMobileApp
 
             try
             {
-                using var conn = new MySqlConnection(ConnectionString);
-                await conn.OpenAsync();
+                using var conn = new MySqlConnection(await GetConnectionStringAsync()); await conn.OpenAsync();
 
                 string checkColSql = @"SELECT COUNT(*) FROM INFORMATION_SCHEMA.COLUMNS 
                                        WHERE TABLE_SCHEMA = 'plk_u_sis_db' 
