@@ -9,8 +9,9 @@ It upholds honesty and integrity through a transparent GitHub history that credi
 It also supports the university's mission of using intelligence for the good of the community by giving the campus a tool that is simple, reliable, and easy to use.
 
 
-## GROUP MEMBERS AND ASSIGNED ROLES
-### Group Name / Number: Team PLK - Group 6
+## Group Name / Number: Team PLK - Group 6
+
+#### GROUP MEMBERS AND ASSIGNED ROLES
 
 **Kate Jewell A. Curativo:**
 Desktop ScottPlot Analytics & Dashboard
@@ -21,7 +22,7 @@ Async MySQL Data Sync & Loopback Routing (10.0.2.2)
 **Princess Joie M. Villar:**
 Installer Packaging (.msi & .apk) & CherryTree Documentation
 
-**ALL MEMBERS**
+**ALL MEMBERS:**
 .NET MAUI Mobile UI & Navigation
 
 **Github Repository Link:** 
